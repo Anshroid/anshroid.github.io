@@ -1,0 +1,64 @@
+.button {
+	background-color: skyblue;
+	border: none;
+	color: black;
+	padding: 10px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 8px;
+	margin-top: 20px;
+}
+
+.para {
+	font: 15px 'Calibri', serif;
+}
+
+.center-screen {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 3px;
+	text-align: center;
+}
+
+.body {
+	background-color: #FED8B1;
+}
+
+.h1 {
+	font: 54px 'Lobster', serif;
+}
+
+input[type=text] {
+	width: 50%;
+	padding: 12px 15px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	-webkit-transition: 0.5s;
+	border: 3px solid #FED8B1;
+	transition: 0.5s;
+	outline: none;
+	background-color: #202020;
+	color: #077800;
+	background-image: url('cmd.png');
+	background-position: 5px 3px;
+	background-repeat: no-repeat;
+	padding-left: 50px;
+	transition: border 2s linear;
+	font: 18px 'Calibri', serif;
+}
+
+input[type=text]:focus {
+	border: 3px solid #555;
+	outline: none;
+}
+
+label {
+	margin-top: 5px;
+	font: 14px 'Calibri', serif;
+	text-align: center;
+}

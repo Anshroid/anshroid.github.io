@@ -1,16 +1,31 @@
-function sendreq(url, request) {
-	return fetch(url, {method: request})
-};
-
 console.log(document.getElementById("button"));
 document.getElementById("button").onclick = function() {
-	response = sendreq('http://127.0.0.1:7779', "GET");
+	document.getElementById("change").innerHTML = ""
+	response = fetch('http://127.0.0.1:7779', {method: "GET"}).catch(error => {
+		document.getElementById("change").innerHTML = "Server offline or no connection!";
+		throw "Forcing Return!";
+	})
 	response.then(response => response).then(data => {
-	console.log(data);
+	//console.log(data);
 	if (data.status == 200) {
-		document.getElementById("change").innerHTML = "OK!";
+		sendtext = document.getElementById("input").value;
+		response2 = fetch('http://127.0.0.1:7779?Action=send&Text=' + sendtext, {method: "POST"});
+		response2.then(response => response).then(data => {
+			console.log(data.status.toString())
+			if (data.status == 202) {
+				document.getElementById("change").innerHTML = "Send OK!";
+				document.getElementById("input").value = "";
+			} else if (data.status == 500) {
+				reason = data.statusText;
+				if (reason == "noinput") {
+					document.getElementById("change").innerHTML = "No Input Provided: Please enter something into the below box.";
+				} else {
+					document.getElementById("change").innerHTML = "Error: " + reason;
+				}
+			}
+		});
 	} else if (data.status == 205) {
-		document.getElementById("change").innerHTML = "Plugin Disabled! No connection to server!";
+		document.getElementById("change").innerHTML = "Plugin Disabled!";
 	} else if (data.status == 500) {
 		document.getElementById("change").innerHTML = "500 Internal Server Error";
 	};
