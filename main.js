@@ -1,7 +1,7 @@
 console.log(document.getElementById("button"));
 document.getElementById("button").onclick = function() {
 	document.getElementById("change").innerHTML = ""
-	response = fetch('http://86.18.229.147:7778', {method: "GET"}).catch(error => {
+	response = fetch('https://anshroid.tk:7778', {method: "GET"}).catch(error => {
 		document.getElementById("change").innerHTML = "Server offline or no connection!";
 		throw "Forcing Return!";
 	})
@@ -9,7 +9,7 @@ document.getElementById("button").onclick = function() {
 	//console.log(data);
 	if (data.status == 200) {
 		sendtext = document.getElementById("input").value;
-		response2 = fetch('http://86.18.229.147:7778?Action=send&Text=' + sendtext, {method: "POST"});
+		response2 = fetch('https://anshroid.tk:7778?Action=send&Text=' + sendtext, {method: "POST"});
 		response2.then(response => response).then(data => {
 			console.log(data.status.toString())
 			if (data.status == 202) {
