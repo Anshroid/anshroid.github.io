@@ -9,7 +9,13 @@ document.getElementById("button").onclick = function() {
 	//console.log(data);
 	if (data.status == 200) {
 		sendtext = document.getElementById("input").value;
-		response2 = fetch('https://anshroid.tk:7778?Action=send&Text=' + sendtext, {method: "POST"});
+		enter = document.getElementById("checkbox").checked;
+		if (enter == true) {
+			enter = "Yes";
+		} else {
+			enter = "No";
+		}
+		response2 = fetch('https://anshroid.tk:7778?Action=send&Text=' + sendtext + "&Enter=" + enter, {method: "POST"});
 		response2.then(response => response).then(data => {
 			console.log(data.status.toString())
 			if (data.status == 202) {
