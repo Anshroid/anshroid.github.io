@@ -1,7 +1,44 @@
-h1 {
-	color: indigo;
+#bg-image {
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: -999;
+	display: block;
+	background-image: url('resources/desk.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	filter: blur(15px);
+	height: 100%;
 }
 
-h1:hover {
-	color: blue;
+@media(min-width: 800px) {
+	#bg-image {
+		--x: 0px;
+		--y: 0px;
+		transform: scale(1.1) translate(70px, 0px);
+		background-position: var(--x) var(--y);
+	}
+}
+
+.main {
+	background: transparent;
+}
+
+.pfp {
+	transition: 0.2s;
+}
+
+.pfp:hover {
+	height: 200px;
+	width: 200px;
+	transition: 0.5s;
+}
+
+.card {
+	margin: 10px;
+}
+
+.theme:hover #moon {
+	fill: #000000;
 }
