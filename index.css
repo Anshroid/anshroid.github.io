@@ -20,7 +20,9 @@
 	-webkit-text-fill-color: transparent;
 }
 
-@media(min-width: 800px) {
+
+
+@media(min-width: 1025px) {
 	#bg-image {
 		--x: 0px;
 		--y: 0px;
