@@ -60,3 +60,9 @@
 		background-position: 0 50%;
 	}
 }
+
+@media(min-width: 544px) {
+	.height-sm-auto {
+		height: 56px !important;
+	}
+}
