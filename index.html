@@ -3,15 +3,19 @@
 	<head>
 		<title>Anshroid Nemo</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" type="text/css" href="primer.css">
+		<link rel="stylesheet" type="text/css" href="/lib/primer.css">
 		<link rel="stylesheet" type="text/css" href="index.css">
 		<script type="text/javascript" src="index.js" defer></script>
+		<script type="text/javascript" src="/js/theme.js" defer></script>
 	</head>
 	<body data-color-mode="dark" data-dark-theme="dark">
 		<header class="Header">
-			<img id="pfp" src="resources/pfp.svg" alt="" class="avatar mr-2" height="32" width="32" />
-			<p class="h3">Anshroid</p>
-			<div id="theme-changer" class="position-absolute right-3">
+			<img id="pfp" src="/resources/pfp.svg" alt="" class="avatar mr-2" height="32" width="32" />
+			<p class="h3 Header-item mb-0">Anshroid</p>
+			<a href="/" class="Header-item Header-link">Home</a>
+			<a href="/" class="Header-item Header-link">Projects</a>
+			<span class="Header-item Header-item--full"></span>
+			<div id="theme-changer" class="Header-item">
 				<button class="btn btn-octicon">
 					<svg id="moon" fill="#FFFFFF" class="v-hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20"><path d="M9.598 1.591a.749.749 0 0 1 .785-.175 7.001 7.001 0 1 1-8.967 8.967.75.75 0 0 1 .961-.96 5.5 5.5 0 0 0 7.046-7.046.75.75 0 0 1 .175-.786Zm1.616 1.945a7 7 0 0 1-7.678 7.678 5.499 5.499 0 1 0 7.678-7.678Z"></path></svg>
 
@@ -66,7 +70,7 @@
 
 				<div class="col-lg-4 Box p-3 m-3 anim-hover-grow color-shadow-large d-flex flex-column position-relative">
 					<div class="d-flex flex-column flex-sm-row flex-1">
-						<img src="resources/desk.jpg" alt="desk" class="rounded-2 width-sm-auto width-full height-full height-sm-auto" />
+						<img src="/projects/kchess/resources/kchess.jpg" alt="desk" class="rounded-2 width-sm-auto width-full height-full height-sm-auto" />
 						<p class="pl-0 pl-sm-3 m-0 pt-4 pt-sm-0 text-left flex-1">
 							<span class="h5">KChess</span><br>
 							A chessboard for Kindle! Not an official Amazon app.
