@@ -4,12 +4,19 @@
 	right: 0;
 	z-index: -999;
 	display: block;
-	background-image: url('resources/desk.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
 	filter: blur(15px);
 	height: 100%;
+}
+
+body[data-color-mode="dark"] #bg-image {
+	background-image: url('resources/desk.jpg');
+}
+
+body[data-color-mode="light"] #bg-image {
+	background-image: url('resources/desklight.jpg');
 }
 
 #hello {
@@ -26,7 +33,7 @@
 	#bg-image {
 		--x: 0px;
 		--y: 0px;
-		transform: scale(1.1) translate(70px, 0px);
+		transform: scale(1.1) translate(100px, 0px);
 		background-position: var(--x) var(--y);
 	}
 }
