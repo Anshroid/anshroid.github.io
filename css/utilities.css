@@ -1,0 +1,15 @@
+@media(min-width: 544px) {
+	.height-sm-auto {
+		height: 56px !important;
+	}
+}
+
+@media(min-width: 1025px) {
+	.v-lg-visible {
+		visibility: visible !important;
+	}
+}
+
+.mt-half {
+	margin-top: 50vh !important;
+}

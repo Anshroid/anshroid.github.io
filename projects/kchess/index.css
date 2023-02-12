@@ -1,25 +1,3 @@
-#bg-image {
-    position: fixed;
-	left: 0;
-	right: 0;
-	z-index: -1;
-	display: block;
-	background-image: url('resources/kchess.jpg');
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	filter: blur(3px);
-	height: 100%;
-}
-
-#body {
-    background-color: transparent;
-}
-
-#main-header {
-    background: linear-gradient(180deg, transparent, var(--color-canvas-default));
-}
-
-#article {
-    background: var(--color-canvas-default);
+body {
+	--bg-image: url(/projects/kchess/resources/kchess.jpg);
 }

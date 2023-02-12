@@ -27,8 +27,6 @@ body[data-color-mode="light"] #bg-image {
 	-webkit-text-fill-color: transparent;
 }
 
-
-
 @media(min-width: 1025px) {
 	#bg-image {
 		--x: 0px;
@@ -48,14 +46,6 @@ body[data-color-mode="light"] #bg-image {
 	transition: 0.5s;
 }
 
-.card {
-	margin: 10px;
-}
-
-#theme-changer:hover #moon {
-	fill: #000000;
-}
-
 @keyframes gradient {
 	0% {
 		background-position: 0 50%;
@@ -65,11 +55,5 @@ body[data-color-mode="light"] #bg-image {
 	}
 	100% {
 		background-position: 0 50%;
-	}
-}
-
-@media(min-width: 544px) {
-	.height-sm-auto {
-		height: 56px !important;
 	}
 }
