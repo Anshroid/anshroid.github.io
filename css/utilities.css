@@ -1,13 +1,12 @@
+/* sm breakpoint */
 @media(min-width: 544px) {
 	.height-sm-auto {
 		height: 56px !important;
 	}
 }
 
+/* lg breakpoint */
 @media(min-width: 1025px) {
-	.v-lg-visible {
-		visibility: visible !important;
-	}
 }
 
 .mt-half {
