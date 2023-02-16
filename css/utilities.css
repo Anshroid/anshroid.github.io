@@ -12,3 +12,24 @@
 .mt-half {
 	margin-top: 50vh !important;
 }
+
+.anim-fade-left {
+  opacity: 0;
+  animation-name: fade-left;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-delay: 1s;
+}
+
+@keyframes fade-left {
+  0% {
+    opacity: 0.8;
+    transform: translateX(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
