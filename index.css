@@ -31,7 +31,8 @@ body[data-color-mode="light"] #bg-image {
 	#bg-image {
 		--x: 0px;
 		--y: 0px;
-		transform: scale(1.1) translate(100px, 0px);
+		transform: scale(1.1);
+		transform-origin: left;
 		background-position: var(--x) var(--y);
 	}
 }
