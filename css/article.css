@@ -10,15 +10,3 @@
 	filter: blur(3px);
 	height: 100%;
 }
-
-#body {
-    background-color: transparent;
-}
-
-#main-header {
-    background: linear-gradient(180deg, transparent, var(--color-canvas-default));
-}
-
-#article {
-    background: var(--color-canvas-default);
-}

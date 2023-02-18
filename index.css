@@ -7,7 +7,7 @@
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	filter: blur(15px);
+	filter: blur(15px) brightness(0.8);
 	height: 100%;
 }
 
@@ -31,7 +31,8 @@ body[data-color-mode="light"] #bg-image {
 	#bg-image {
 		--x: 0px;
 		--y: 0px;
-		transform: scale(1.1) translate(100px, 0px);
+		transform: scale(1.1);
+		transform-origin: left;
 		background-position: var(--x) var(--y);
 	}
 }

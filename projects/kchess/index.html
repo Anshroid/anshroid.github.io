@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Anshroid Nemo</title>
+    <title>Prizmchess</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
     <link rel="stylesheet" type="text/css" href="/lib/primer.css">
     <link rel="stylesheet" type="text/css" href="/lib/highlight.css">
-    <link rel="stylesheet" type="text/css" href="/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/css/utilities.css">
     <link rel="stylesheet" type="text/css" href="/css/article.css">
     <link rel="stylesheet" type="text/css" href="index.css">
 
     <script type="text/javascript" src="/lib/highlight.js"></script>
     <script type="text/javascript" src="/js/theme.js" defer></script>
+    <script type="text/javascript" src="/js/sidebar.js" defer></script>
     <script type="text/javascript" src="index.js" defer></script>
 
     <script defer>hljs.highlightAll();</script>
@@ -19,166 +22,204 @@
 <header class="Header">
     <img id="pfp" src="/resources/pfp.svg" alt="" class="avatar mr-2" height="32" width="32"/>
     <p class="h3 Header-item mb-0">Anshroid</p>
-    <a href="/" class="Header-item Header-link">Home</a>
-    <a href="/projects" class="Header-item Header-link">Projects</a>
-    <a href="/about.html" class="Header-item Header-link">About</a>
+    <a href="/" class="Header-item Header-link d-none d-sm-flex">Home</a>
+    <a href="/projects" class="Header-item Header-link d-none d-sm-flex">Projects</a>
+    <a href="/about.html" class="Header-item Header-link d-none d-sm-flex">About</a>
     <span class="Header-item Header-item--full"></span>
-    <div id="theme-changer" class="Header-item">
-        <button class="btn btn-octicon">
-            <svg id="moon" fill="#FFFFFF" class="v-hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                 width="20" height="20">
-                <path d="M9.598 1.591a.749.749 0 0 1 .785-.175 7.001 7.001 0 1 1-8.967 8.967.75.75 0 0 1 .961-.96 5.5 5.5 0 0 0 7.046-7.046.75.75 0 0 1 .175-.786Zm1.616 1.945a7 7 0 0 1-7.678 7.678 5.499 5.499 0 1 0 7.678-7.678Z"></path>
-            </svg>
 
-            <svg id="sun" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20">
-                <path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm0-1.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm5.657-8.157a.75.75 0 0 1 0 1.061l-1.061 1.06a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.06-1.06a.75.75 0 0 1 1.06 0Zm-9.193 9.193a.75.75 0 0 1 0 1.06l-1.06 1.061a.75.75 0 1 1-1.061-1.06l1.06-1.061a.75.75 0 0 1 1.061 0ZM8 0a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 8 0ZM3 8a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 3 8Zm13 0a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 16 8Zm-8 5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 8 13Zm3.536-1.464a.75.75 0 0 1 1.06 0l1.061 1.06a.75.75 0 0 1-1.06 1.061l-1.061-1.06a.75.75 0 0 1 0-1.061ZM2.343 2.343a.75.75 0 0 1 1.061 0l1.06 1.061a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-1.06-1.06a.75.75 0 0 1 0-1.06Z"></path>
-            </svg>
-        </button>
-    </div>
+    <button class="Header-item d-none d-sm-flex btn btn-octicon theme-changer">
+        <svg fill="currentColor" class="d-none moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+             width="20" height="20">
+            <path d="M9.598 1.591a.749.749 0 0 1 .785-.175 7.001 7.001 0 1 1-8.967 8.967.75.75 0 0 1 .961-.96 5.5 5.5 0 0 0 7.046-7.046.75.75 0 0 1 .175-.786Zm1.616 1.945a7 7 0 0 1-7.678 7.678 5.499 5.499 0 1 0 7.678-7.678Z"></path>
+        </svg>
+        <svg fill="currentColor" class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20"
+             height="20">
+            <path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm0-1.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm5.657-8.157a.75.75 0 0 1 0 1.061l-1.061 1.06a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.06-1.06a.75.75 0 0 1 1.06 0Zm-9.193 9.193a.75.75 0 0 1 0 1.06l-1.06 1.061a.75.75 0 1 1-1.061-1.06l1.06-1.061a.75.75 0 0 1 1.061 0ZM8 0a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 8 0ZM3 8a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 3 8Zm13 0a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 16 8Zm-8 5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 8 13Zm3.536-1.464a.75.75 0 0 1 1.06 0l1.061 1.06a.75.75 0 0 1-1.06 1.061l-1.061-1.06a.75.75 0 0 1 0-1.061ZM2.343 2.343a.75.75 0 0 1 1.061 0l1.06 1.061a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-1.06-1.06a.75.75 0 0 1 0-1.06Z"></path>
+        </svg>
+    </button>
+
+    <button id="sidebar-open" class="Header-item d-flex d-sm-none btn btn-octicon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" width="16" height="16">
+            <path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path>
+        </svg>
+    </button>
 </header>
 
 <div id="bg-image"></div>
-<div id="body" class="Box m-3 pb-0">
-    <div id="main-header" class="d-flex flex-column">
-        <p class="h1 text-center mt-3 text-underline">KChess</p>
-        <p class="h2 text-center">A chessboard for the (jailbroken) Kindle</p>
-        <div class="text-center">
-            <span class="Label">Java</span>
-            <span class="Label">UI</span>
+<main class="width-full">
+    <details id="sidebar"
+             class="details-reset details-overlay details-overlay-dark float-right position-absolute top-0 right-0 height-full"
+             style="width: 70%;">
+        <summary></summary>
+        <div class="position-relative color-bg-default height-full anim-fade-left"
+             style="z-index: 112; animation-delay: 0s;">
+            <nav class="SideNav border">
+                <a class="SideNav-item" href="/">Home</a>
+                <a class="SideNav-item" href="/projects">Projects</a>
+                <a class="SideNav-item theme-changer">
+                    Change Theme
+                    <span class="float-right">
+                        <svg fill="currentColor" class="d-none moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                             width="20" height="20">
+                            <path d="M9.598 1.591a.749.749 0 0 1 .785-.175 7.001 7.001 0 1 1-8.967 8.967.75.75 0 0 1 .961-.96 5.5 5.5 0 0 0 7.046-7.046.75.75 0 0 1 .175-.786Zm1.616 1.945a7 7 0 0 1-7.678 7.678 5.499 5.499 0 1 0 7.678-7.678Z"></path>
+                        </svg>
+                        <svg fill="currentColor" class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                             width="20" height="20">
+                            <path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm0-1.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm5.657-8.157a.75.75 0 0 1 0 1.061l-1.061 1.06a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.06-1.06a.75.75 0 0 1 1.06 0Zm-9.193 9.193a.75.75 0 0 1 0 1.06l-1.06 1.061a.75.75 0 1 1-1.061-1.06l1.06-1.061a.75.75 0 0 1 1.061 0ZM8 0a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 8 0ZM3 8a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 3 8Zm13 0a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 16 8Zm-8 5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 8 13Zm3.536-1.464a.75.75 0 0 1 1.06 0l1.061 1.06a.75.75 0 0 1-1.06 1.061l-1.061-1.06a.75.75 0 0 1 0-1.061ZM2.343 2.343a.75.75 0 0 1 1.061 0l1.06 1.061a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-1.06-1.06a.75.75 0 0 1 0-1.06Z"></path>
+                        </svg>
+                    </span>
+                </a>
+            </nav>
         </div>
-        <a href="https://github.com/Anshroid/KChess" class="text-center m-3">
-            <button class="btn" type="button">
-                <svg class="mr-1" width="24" height="24" viewBox="0 0 16 16" fill="currentColor"
-                     style="display: inline-block; vertical-align: text-bottom;">
-                    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
-                </svg>
-                <span>View on GitHub</span>
-            </button>
-        </a>
-        <span class="mb-10"></span>
+    </details>
+
+    <div class="Box m-3 pb-0" style="background-color: transparent;">
+        <div class="d-flex flex-column"
+             style="background: linear-gradient(180deg, transparent, var(--color-canvas-default));">
+            <p class="h1 text-center mt-3 text-underline">KChess</p>
+            <p class="h2 text-center">A chessboard for the (jailbroken) Kindle</p>
+            <div class="text-center">
+                <span class="Label">Java</span>
+                <span class="Label">UI</span>
+            </div>
+            <a href="https://github.com/Anshroid/KChess" class="text-center m-3">
+                <button class="btn" type="button">
+                    <svg class="mr-1" width="24" height="24" viewBox="0 0 16 16" fill="currentColor"
+                         style="display: inline-block; vertical-align: text-bottom;">
+                        <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+                    </svg>
+                    <span>View on GitHub</span>
+                </button>
+            </a>
+            <span class="mb-10"></span>
+        </div>
+
+        <div class="mb-0 p-4 color-bg-default">
+            <p class="h3">What is KChess?</p>
+            <p class="f5">
+                KChess is a chessboard for the Kindle. With all chess rules (including en passant and castling)
+                implemented, it is a fully functional chessboard. Although lacking certain features to be developed in
+                the future, it is a great way to play chess on the Kindle.
+            </p>
+            <p class="f5">
+                Note: KChess is only compatible with jailbroken Kindles, as it requires root access to the Kindle's
+                filesystem.
+            </p>
+
+            <br>
+
+            <p class="h3">How to install</p>
+            <p class="f5">
+                To install KChess, you must first have a jailbroken Kindle (FW v5). If you do not, you can follow <a
+                    href="https://wiki.mobileread.com/wiki/Kindle_Hacking" class="Link">this guide</a> to jailbreak your
+                Kindle. Once you have a jailbroken Kindle, you can install KChess by downloading the latest release from
+                <a href="https://github.com/Anshroid/KChess/releases" class="Link">GitHub</a> and copying the <code>
+                kchess.bin</code> file to the <code>/mrpackages</code> directory on the visible filesystem on your
+                Kindle. You can then run the MRPI installer from KUAL to install KChess.
+            </p>
+            <br>
+
+            <p class="h3">Why did I make it?</p>
+            <p class="f5">
+                Looking through the list of apps available for the Kindle on <a
+                    href="https://wiki.mobileread.com/wiki/Kindlet_Index" class="Link">Mobileread</a>, the unified wiki
+                for Kindle hacking, none of the available apps were compatible with the firmware version of my Kindle
+                (>5.12.0). In addition, looking through the (surprisingly brief!) list of apps developed for the Kindle
+                version 5, I wasn't even able to find any hints on how to develop for the platform other than some brief
+                <a href="https://wiki.mobileread.com/wiki/Kindle_Touch_Hacking#Architecture" class="Link">notes on the
+                    architecture</a>, so I decided to take a peek for myself.
+            </p>
+            <p class="f5">
+                One of the reasons why it was so tricky to find guides on making <code>Booklets</code>, as they are
+                known, is that almost all the knowledge on hacking the Kindle is based on older firmware versions that
+                compile against the older Amazon <code>Kindlet</code> SDK, which no longer even exists on the newer
+                Kindles. There were only three Booklets I could find and learn from, and all three were based on each
+                other, as I'll explain below, which was both annoying and funny!
+            </p>
+            <p class="f5">
+                This led me down a deep rabbit hole of Kindle hacking, involving accessing a private Amazon SDK stored
+                on the Kindle itself with no documentation and using <a
+                    href="https://en.wikipedia.org/wiki/Reflective_programming" class="Link">reflection</a> to access
+                the relevant functions. I managed to uncover <a href="https://github.com/coplate/KUAL_Booklet"
+                                                                class="Link">three</a> <a
+                    href="https://github.com/yparitcher/KUAL_Booklet" class="Link">GitHub</a> <a
+                    href="https://github.com/ieb/Signalk_Booklet" class="Link">repositories</a> that, once I
+                reverse-engineered them, helped make my own. But enough of that. Let's get to the good stuff.
+            </p>
+
+            <br>
+
+            <p class="h3">About the app</p>
+            <p class="f5">
+                A Kindle 5 <code>Booklet</code> is a JSwing applet that runs on the Kindle's modified Java runtime (<a
+                    href="https://docs.oracle.com/javame/config/cdc/cdc-opt-impl/ojmeec/1.0/runtime/html/cvm.htm"
+                    class="Link">cvm</a>), with further modified JSwing libraries to be compatible with the obviously
+                different <a href="https://en.wikipedia.org/wiki/E_Ink" class="Link">E-Ink</a> hardware. This also
+                created some interesting side effects to work around, which I'll get into later.
+            </p>
+            <p class="f5">
+                The <code>.jar</code> file that is compiled has a special entry point that uses the Kindle Booklet SDK
+                to find a parent JSwing window and attach our own UI as a child to it. The utility functions associated
+                with this entry file were almost copied directly from one of the aforementioned repositories, which I
+                then found was copied from one of the other repositories, which was a fork of the third repository. I
+                even found one of the comments in said file in all three repositories, namely
+            </p>
+            <pre><code class="language-java">// NOTE: Pilfered from KPVBooklet</code></pre>
+            <p class="f5">which is hilarious to me.</p>
+
+            <p class="f5">
+                Finally, the <code>.jar</code> file is then signed with a private key that is stored on the Kindle
+                itself, and the <code>.jar</code> file is then copied to the Kindle's filesystem. This private key is
+                standardised in the Kindle hacking community, so I didn't have to worry about that as I installed the
+                keys as part of
+                setting up the jailbreak in the first place. The signing is done with a great tool called <a
+                    href="https://github.com/NiLuJe/KindleTool" class="Link">KindleTool</a>, which also generates a
+                <code>.bin</code> file that is formatted as a Kindle update package that can be installed with the
+                Update your Kindle menu or using <a href="https://www.mobileread.com/forums/showthread.php?t=251143"
+                                                    class="Link">MRPI</a>.
+            </p>
+
+            <p class="f5">
+                The way the app itself runs is by creating a blank file in the Kindle's <code>documents</code> folder in
+                the visible filesystem, and then associating a custom file extension with the <code>.jar</code> file.
+                When the user clicks on the file, the Kindle's internal linux shell runs the <code>.jar</code> file,
+                which then runs the applet. We use a custom save file format (PGN coming soon!) to save the game state,
+                and this is saved and loaded from the <code>documents</code> folder on every launch.
+            </p>
+
+            <br>
+
+            <p class="h3">Developing the app</p>
+            <p class="f5">
+                The first issue I ran into was just getting started on the app. After taking one look at the (very
+                little) information I could find on the Kindle's architecture, I was completely lost. I had no idea
+                where to start, so I decided it would probably be best to just start on what I could already do, and so
+                I started by making the UI for the app. I'd never used JSwing before, but I had used tkinter and PyQT
+                before, so I figured it couldn't have been too different. I was right, and I was able to make a basic UI
+                in a few hours.
+            </p>
+            <p class="f5">
+                The next step was to develop the game logic. I had never written a chessboard before, and I had heard
+                that it was quite tricky to do due to the huge number of rules. I just decided to start somewhere and
+                work it out as I went along, which probably wasn't the wisest decision, and there are definitely
+                improvements that can be made. For example, each square of the board is its own <code>JPanel</code> as a
+                result of a bad decision I made early on, and all the piece IDs are a relic of an old system I thought
+                of that didn't work out. Fortunately enough, the Kindle has enough memory that it doesn't really matter
+                (<a href="/projects/prizmchess" class="Link">foreshadowing</a>), so I didn't have to worry about that.
+            </p>
+            <p class="f5">
+                Finally, I had to figure out how to get the applet to run on the Kindle. I had some ideas on where to
+                start from the repositories I had found, but I had no idea what to actually do. I started by trying to
+                copy over all the Booklet-related files from <a href="https://github.com/ieb/Signalk_booklet">this
+                repo</a> and edit all the names to point to my own files, but something or other broke in the process,
+                and I wasn't able to figure out what exactly broke. Instead, I decided to clone the repo, copy in my own
+                code and swap it out. This worked, and I just had to slowly change each instance of the Signalk name to
+                my own and check if anything broke at each stage. By the end of it, I had a working applet that I could
+                run on the Kindle. I did go through the copied code and tried to understand what was going on, but I
+                wasn't really in a position to do much more than comment.
+            </p>
+        </div>
     </div>
-
-    <div id="article" class="mb-0 p-4">
-        <p class="h3">What is KChess?</p>
-        <p class="f5">
-            KChess is a chessboard for the Kindle. With all chess rules (including en passant and castling) implemented,
-            it is a fully functional chessboard. Although lacking certain features to be developed in the future, it is
-            a great way to play chess on the Kindle.
-        </p>
-        <p class="f5">
-            Note: KChess is only compatible with jailbroken Kindles, as it requires root access to the Kindle's
-            filesystem.
-        </p>
-
-        <br>
-
-        <p class="h3">How to install</p>
-        <p class="f5">
-            To install KChess, you must first have a jailbroken Kindle (FW v5). If you do not, you can follow <a
-                href="https://wiki.mobileread.com/wiki/Kindle_Hacking" class="Link">this guide</a> to jailbreak your
-            Kindle. Once you have a jailbroken Kindle, you can install KChess by downloading the latest release from
-            <a href="https://github.com/Anshroid/KChess/releases" class="Link">GitHub</a> and copying the <code>
-            kchess.bin</code> file to the <code>/mrpackages</code> directory on the visible filesystem on your Kindle.
-            You can then run the MRPI installer from KUAL to install KChess.
-        </p>
-        <br>
-
-        <p class="h3">Why did I make it?</p>
-        <p class="f5">
-            Looking through the list of apps available for the Kindle on <a
-                href="https://wiki.mobileread.com/wiki/Kindlet_Index" class="Link">Mobileread</a>, the unified wiki for
-            Kindle hacking, none of the available apps were compatible with the firmware version of my Kindle (>5.12.0).
-            In addition, looking through the (surprisingly brief!) list of apps developed for the Kindle version 5, I
-            wasn't even able to find any hints on how to develop for the platform other than some brief <a
-                href="https://wiki.mobileread.com/wiki/Kindle_Touch_Hacking#Architecture" class="Link">notes on the
-            architecture</a>, so I decided to take a peek for myself.
-        </p>
-        <p class="f5">
-            One of the reasons why it was so tricky to find guides on making <code>Booklets</code>, as they are known,
-            is that almost all the knowledge on hacking the Kindle is based on older firmware versions that compile
-            against the older Amazon <code>Kindlet</code> SDK, which no longer even exists on the newer Kindles. There
-            were only three Booklets I could find and learn from, and
-        </p>
-        <p class="f5">
-            This led me down a deep rabbit hole of Kindle hacking, involving accessing a private Amazon SDK stored on
-            the Kindle itself with no documentation and using <a
-                href="https://en.wikipedia.org/wiki/Reflective_programming" class="Link">reflection</a> to access the
-            relevant functions. I managed to uncover <a href="https://github.com/coplate/KUAL_Booklet" class="Link">three</a>
-            <a href="https://github.com/yparitcher/KUAL_Booklet" class="Link">GitHub</a> <a
-                href="https://github.com/ieb/Signalk_Booklet" class="Link">repositories</a> that, once I
-            reverse-engineered them, helped make my own. But enough of that. Let's get to the good stuff.
-        </p>
-
-        <br>
-
-        <p class="h3">About the app</p>
-        <p class="f5">
-            A Kindle 5 <code>Booklet</code> is a JSwing applet that runs on the Kindle's modified Java runtime (<a
-                href="https://docs.oracle.com/javame/config/cdc/cdc-opt-impl/ojmeec/1.0/runtime/html/cvm.htm"
-                class="Link">cvm</a>), with further modified JSwing libraries to be compatible with the obviously
-            different <a href="https://en.wikipedia.org/wiki/E_Ink" class="Link">E-Ink</a> hardware. This also created
-            some interesting side effects to work around, which I'll get into later.
-        </p>
-        <p class="f5">
-            The <code>.jar</code> file that is compiled has a special entry point that uses the Kindle Booklet SDK to
-            find a parent JSwing window and attach our own UI as a child to it. The utility functions associated with
-            this entry file were almost copied directly from one of the aforementioned repositories, which I then found
-            was copied from one of the other repositories, which was a fork of the third repository. I even found one of
-            the comments in said file in all three repositories, namely
-        </p>
-        <pre><code class="language-java">// NOTE: Pilfered from KPVBooklet</code></pre>
-        <p class="f5">which is hilarious to me.</p>
-
-        <p class="f5">
-            Finally, the <code>.jar</code> file is then signed with a private key that is stored on the Kindle itself,
-            and the <code>.jar</code> file is then copied to the Kindle's filesystem. This private key is standardised
-            in the hacking community, so I didn't have to worry about that as I installed the keys as part of setting
-            up the jailbreak in the first place. The signing is done with a great tool called <a
-                href="https://github.com/NiLuJe/KindleTool" class="Link">KindleTool</a>, which also generates a <code>
-            .bin</code> file that is formatted as a Kindle update package that can be installed with the Update your
-            Kindle menu or using <a href="https://www.mobileread.com/forums/showthread.php?t=251143"
-                                    class="Link">MRPI</a>.
-        </p>
-
-        <p class="f5">
-            The way the app itself runs is by creating a blank file in the Kindle's <code>documents</code> folder in the
-            visible filesystem, and then associating a custom file extension with the <code>.jar</code> file. When the
-            user clicks on the file, the Kindle's internal linux shell runs the <code>.jar</code> file, which then
-            runs the applet. We use a custom save file format (PGN coming soon!) to save the game state, and this is
-            saved and loaded from the <code>documents</code> folder on every launch.
-        </p>
-
-        <br>
-
-        <p class="h3">Developing the app</p>
-        <p class="f5">
-            The first issue I ran into was just getting started on the app. After taking one look at the (very little)
-            information I could find on the Kindle's architecture, I was completely lost. I had no idea where to start,
-            so I decided it would probably be best to just start on what I could already do, and so I started by making
-            the UI for the app. I'd never used JSwing before, but I had used tkinter and PyQT before, so I figured it
-            couldn't have been too different. I was right, and I was able to make a basic UI in a few hours.
-        </p>
-        <p class="f5">
-            The next step was to develop the game logic. I had never written a chessboard before, and I had heard that
-            it was quite tricky to do due to the huge number of rules. I just decided to start somewhere and work it out
-            as I went along, which probably wasn't the wisest decision, and there are definitely improvements that can
-            be made. For example, each square of the board is its own <code>JPanel</code> as a result of a bad decision
-            I made early on, and all the piece IDs are a relic of an old system I thought of that didn't work out.
-            Fortunately enough, the Kindle has enough memory that it doesn't really matter (<a
-                href="/projects/prizmchess" class="Link">foreshadowing</a>), so I didn't have to worry about that.
-        </p>
-        <p class="f5">
-            Finally, I had to figure out how to get the applet to run on the Kindle. I had some ideas on where to start
-            from the repositories I had found, but I had no idea what to actually do. I started by trying to copy over
-            all the Booklet-related files from <a href="https://github.com/ieb/Signalk_booklet">this repo</a> and edit
-            all the names to point to my own files, but something or other broke in the process, and I wasn't able to
-            figure out what exactly broke. Instead, I decided to clone the repo, copy in my own code and swap it out.
-            This worked, and I just had to slowly change each instance of the Signalk name to my own and check if
-            anything broke at each stage. By the end of it, I had a working applet that I could run on the Kindle.
-            I did go through the copied code and tried to understand what was going on, but I wasn't really in a
-            position to do much more than comment.
-        </p>
-    </div>
-</div>
+</main>
 </body>
 </html>
