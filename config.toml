@@ -1,0 +1,12 @@
+baseURL = 'https://anshroid.github.io/'
+languageCode = 'en-us'
+title = 'Anshroid Nemo'
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[taxonomies]
+language = "languages"
+framework = "frameworks"
+skill = "skills"
+status = "status"

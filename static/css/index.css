@@ -12,11 +12,11 @@
 }
 
 body[data-color-mode="dark"] #bg-image {
-	background-image: url('resources/desk.jpg');
+	background-image: url('../img/desk.jpg');
 }
 
 body[data-color-mode="light"] #bg-image {
-	background-image: url('resources/desklight.jpg');
+	background-image: url('../img/desklight.jpg');
 }
 
 #hello {
