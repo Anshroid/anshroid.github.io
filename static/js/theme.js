@@ -11,7 +11,6 @@ document.querySelectorAll(".theme-changer").forEach(elem => {elem.onclick = () =
 }});
 
 let theme = window.localStorage.getItem('data-theme');
-console.log(theme)
 if (theme) {
 	document.body.setAttribute('data-color-mode', theme);
 	document.body.setAttribute('data-dark-theme', theme);
