@@ -13,6 +13,11 @@
 	margin-top: 50vh !important;
 }
 
+.aspect-ratio-1 {
+    height: 13vw;
+    aspect-ratio: 1 / 1;
+}
+
 .anim-fade-left {
   opacity: 0;
   animation-name: fade-left;

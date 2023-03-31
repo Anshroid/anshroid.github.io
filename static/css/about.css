@@ -1,0 +1,141 @@
+/* Stars */
+.magic {
+	position: relative;
+	background: linear-gradient(to right, purple, darkmagenta, darkorchid, purple);
+	background-size: 200% 200%;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: gradient 5s ease infinite;
+}
+
+.magic-star {
+	--size: clamp(20px, 1.5vw, 30px);
+	--star-left: 0;
+	--star-top: 0;
+
+	display: block;
+	height: var(--size);
+	width: var(--size);
+	left: var(--star-left);
+	top: var(--star-top);
+	position: absolute;
+
+	animation: star-scale 700ms ease forwards;
+}
+
+.magic-star > svg {
+	display: block;
+	opacity: 0.7;
+
+	animation: rotate 1s linear infinite;
+}
+
+.magic-star > svg > path {
+	fill: blueviolet;
+}
+
+.magic > #hello {
+
+	cursor: default;
+	user-select: none;
+}
+
+.magic > #hello > * {
+	-webkit-text-fill-color: transparent;
+}
+
+@keyframes star-scale {
+	from, to {
+		transform: scale(0);
+	}
+
+	50% {
+		transform: scale(1);
+	}
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Split words */
+.split-word > * {
+	display: inline-block;
+	transition: 200ms;
+}
+.split-word:hover :nth-child(1) {
+	transform: translate(-5px, -2px) rotate(-5deg);
+}
+.split-word:hover :nth-child(2) {
+	transform: translate(-3px, -4px) rotate(2deg);
+	transition-delay: 40ms;
+}
+.split-word:hover :nth-child(3) {
+	transform: translate(-1px, 3px) rotate(3deg);
+	transition-delay: 80ms;
+}
+.split-word:hover :nth-child(4) {
+	transform: translate(2px, -1px) rotate(-2deg);
+	transition-delay: 120ms;
+}
+.split-word:hover :nth-child(5) {
+	transform: translate(4px, -3px) rotate(1deg);
+	transition-delay: 160ms;
+}
+.split-word:hover :nth-child(6) {
+	transform: translate(5px, 1px) rotate(4deg);
+	transition-delay: 200ms;
+}
+.split-word:hover :nth-child(7) {
+	transform: translate(2px, 1px) rotate(-4deg);
+	transition-delay: 240ms;
+}
+.split-word:hover :nth-child(8) {
+	transform: translate(-4px, 0px) rotate(-1deg);
+	transition-delay: 280ms;
+}
+.split-word:hover :nth-child(9) {
+	transform: translate(3px, 2px) rotate(1deg);
+	transition-delay: 320ms;
+}
+.split-word:hover :nth-child(10) {
+	transform: translate(0px, -3px) rotate(2deg);
+	transition-delay: 360ms;
+}
+.split-word:hover :nth-child(11) {
+	transform: translate(1px, 3px) rotate(3deg);
+	transition-delay: 400ms;
+}
+
+/* Anshul Text */
+#anshul {
+    font-weight: bold;
+    background: linear-gradient(30deg, cornflowerblue, gray, cornflowerblue, magenta, cyan, yellow);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 6s ease infinite;
+}
+
+@keyframes gradient {
+	from, to {
+		background-position: 0 center;
+	}
+
+	50% {
+		background-position: 100% center;
+	}
+}
+
+section {
+	min-height: 20vh;
+}
+
+#a-levels > div {
+	height: 20vh;
+}

@@ -60,7 +60,7 @@ project](https://github.com/users/Anshroid/projects/4) board.
 
 The first step to developing the app was to set up the development toolchain. This already created a
 problem for Harik, as he was using Windows, and the provided `make.bat` file on the SDK did
-not seem to work. I was [using Linux](/about.html), and so I was able to use the
+not seem to work. I was [using Linux](/about), and so I was able to use the
 `make` command to compile the app. After testing the hello world app on Harik's calculator
 (as I don't have one), we moved on to actually developing the app.
 
