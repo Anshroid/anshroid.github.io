@@ -1,0 +1,48 @@
+---
+title: "KChess2PGN"
+layout: "other"
+draft: false
+---
+
+<h1 class="mt-5 text-underline">KChess2PGN</h1>
+<h3 class="mt-2">A converter for KChess save games to an importable PGN format.</h3>
+
+<script src="/js/kchess2pgn.js" defer></script>
+
+<form class="mt-7 m-6">
+    <fieldset>
+        <label for="input-file">Select a KChess save game file: </label>
+        <input class="form-control ml-2" id="input-file" type="file"/>
+    </fieldset>
+
+    <fieldset class="mt-5">
+        <label for="white">Input the name of the player playing the white pieces: </label>
+        <input class="form-control ml-2" id="white" type="text"/>
+    </fieldset>
+    <fieldset class="mt-2">
+        <label for="black">Input the name of the player playing the black pieces: </label>
+        <input class="form-control ml-2" id="black" type="text"/>
+    </fieldset>
+
+    <fieldset class="mt-5">
+        <button class="btn btn-primary mt-2" id="convert" type="button">Convert</button>
+    </fieldset>
+
+    <div class="form-group mt-7">
+        <div class="form-group-header">
+            <label for="output">Output: </label>
+        </div>
+        <div class="form-group-body">
+            <textarea class="form-control ml-2" id="output" rows="10"
+                      disabled>Generated PGN will be put here...</textarea>
+            <button class="btn btn-sm mt-2" id="copy" type="button">Copy to clipboard</button>
+        </div>
+    </div>
+</form>
+
+<div class="position-fixed bottom-10 left-0">
+    <div class="Toast Toast--animateIn Toast--error d-none" id="toast">
+        <span class="Toast-icon"><svg width="14" height="16" viewBox="0 0 14 16" class="octicon octicon-stop" aria-hidden="true"><path fill-rule="evenodd" d="M10 1H4L0 5v6l4 4h6l4-4V5l-4-4zm3 9.5L9.5 14h-5L1 10.5v-5L4.5 2h5L13 5.5v5zM6 4h2v5H6V4zm0 6h2v2H6v-2z"/></svg></span>
+        <span class="Toast-content" id="error"></span>
+    </div>
+</div>
