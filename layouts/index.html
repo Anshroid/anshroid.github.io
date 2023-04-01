@@ -38,7 +38,7 @@
         </p>
 
         <p class="h2">Featured Projects:</p>
-        <div class="container-lg d-flex flex-column flex-lg-row anim-fade-up">
+        <div class="container-lg d-flex flex-column flex-lg-row">
             {{ range last 3 (where .Site.RegularPages "Params.ignore" "!=" "true") }}
                 <div class="col-lg-4 Box p-3 m-3 anim-hover-grow color-shadow-large d-flex flex-column position-relative">
                     <div class="d-flex flex-column flex-sm-row flex-1">
