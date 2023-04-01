@@ -45,7 +45,7 @@ for (const splitText of document.querySelectorAll(".split-word")) {
 
 let existingToastTimeout = null;
 document.querySelector("#discord").onclick = () => {
-    navigator.clipboard.writeText("Anshroid#0810");
+    navigator.clipboard.writeText("Anshroid#0810").then(() => {});
     document.querySelector("#toast").classList.remove("Toast--animateOut");
     document.querySelector("#toast").classList.add("d-none")
     document.querySelector("#toast").classList.remove("d-none")

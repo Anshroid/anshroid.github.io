@@ -37,7 +37,7 @@
     </div>
 
     <ul class="text-center align-center m-5 mt-12 list-style-none">
-        {{ range .Site.RegularPages }}
+        {{ range where .Site.RegularPages "Params.ignore" "!=" "true" }}
         <li class="Box p-3 m-3 anim-hover-grow color-shadow-large d-flex flex-column position-relative project">
             <div class="d-flex flex-column flex-sm-row flex-1">
                 <img src="{{ .Params.image }}" alt="Project Image"
