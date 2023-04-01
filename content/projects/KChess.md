@@ -14,8 +14,9 @@ link: "https://github.com/Anshroid/KChess"
 ## What is KChess?
 
 KChess is a chessboard for the Kindle. With all chess rules (including en passant and castling)
-implemented, it is a fully functional chessboard. Although lacking certain features to be developed in
-the future, it is a great way to play chess on the Kindle.
+implemented, it is a fully functional chessboard. It also supports saving and loading games: games can be exported from
+the Kindle's `/kchess` folder in the visible filesystem and converted to PGN format using 
+[this tool](/projects/kchess/kchess2pgn).
 
 Note: KChess is only compatible with jailbroken Kindles, as it requires root access to the Kindle's
 filesystem.
