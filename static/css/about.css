@@ -1,12 +1,21 @@
 /* Stars */
 .magic {
 	position: relative;
-	background: linear-gradient(to right, purple, darkmagenta, darkorchid, purple);
-	background-size: 200% 200%;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	animation: gradient 5s ease infinite;
+	color: darkmagenta;
 }
+
+/* Background fix to enable gradient clip for firefox only */
+/* With hack from https://browserhacks.com */
+@supports (-moz-appearance:meterbar) {
+	.magic {
+		background: linear-gradient(to right, purple, darkmagenta, darkorchid, purple);
+		background-size: 200% 200%;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: gradient 5s ease infinite;
+	}
+}
+
 
 .magic-star {
 	--size: clamp(20px, 1.5vw, 30px);
@@ -35,13 +44,8 @@
 }
 
 .magic > #hello {
-
 	cursor: default;
 	user-select: none;
-}
-
-.magic > #hello > * {
-	-webkit-text-fill-color: transparent;
 }
 
 @keyframes star-scale {
