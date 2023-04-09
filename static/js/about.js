@@ -18,8 +18,8 @@ for (let star of stars) {
 }
 
 for (const splitSentence of document.querySelectorAll(".split")) {
-    console.log(splitSentence.scrollWidth, Math.floor(splitSentence.getBoundingClientRect().width))
-    if (splitSentence.scrollWidth >= Math.floor(splitSentence.getBoundingClientRect().width)) {
+    console.log(splitSentence.offsetHeight, parseInt(getComputedStyle(splitSentence).lineHeight.split("px")[0]));
+    if (splitSentence.offsetHeight < parseInt(getComputedStyle(splitSentence).lineHeight.split("px")[0])) {
         const text = splitSentence.innerText;
         console.log("splitting '" + text + "'")
         splitSentence.innerText = "";
@@ -52,3 +52,34 @@ document.querySelector("#discord").onclick = () => {
     if (existingToastTimeout) clearTimeout(existingToastTimeout);
     existingToastTimeout = setTimeout(() => document.querySelector("#toast").classList.add("Toast--animateOut"), 2000);
 }
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        entry.target.classList.toggle("show", entry.isIntersecting);
+    });
+});
+
+const sections = document.querySelectorAll("section");
+sections.forEach((section) => {
+    section.classList.add("hidden");
+    observer.observe(section);
+});
+
+
+let order = 1;
+const a_levels = document.querySelectorAll("#a-levels > div");
+a_levels.forEach((a_level) => {
+    a_level.classList.add("hidden");
+    a_level.style.setProperty("--order", order.toString());
+    observer.observe(a_level);
+    order++;
+});
+
+order = 1;
+const contacts = document.querySelectorAll("#contacts > :not(h1)");
+contacts.forEach((contact) => {
+    contact.classList.add("hidden");
+    contact.style.setProperty("--order", order.toString());
+    observer.observe(contact);
+    order++;
+});
