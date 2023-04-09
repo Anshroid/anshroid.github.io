@@ -18,8 +18,8 @@ for (let star of stars) {
 }
 
 for (const splitSentence of document.querySelectorAll(".split")) {
-    console.log(splitSentence.scrollWidth, splitSentence.getBoundingClientRect().width)
-    if (splitSentence.scrollWidth > splitSentence.getBoundingClientRect().width) {
+    console.log(splitSentence.scrollWidth, Math.floor(splitSentence.getBoundingClientRect().width))
+    if (splitSentence.scrollWidth >= Math.floor(splitSentence.getBoundingClientRect().width)) {
         const text = splitSentence.innerText;
         console.log("splitting '" + text + "'")
         splitSentence.innerText = "";
