@@ -71,7 +71,6 @@ const a_levels = document.querySelectorAll("#a-levels > div");
 a_levels.forEach((a_level) => {
     a_level.classList.add("hidden");
     a_level.style.setProperty("--order", order.toString());
-    observer.observe(a_level);
     order++;
 });
 

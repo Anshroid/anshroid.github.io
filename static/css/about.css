@@ -137,7 +137,7 @@
 }
 
 section {
-	margin-bottom: 25%;
+	margin-bottom: 40%;
 }
 
 #a-levels > div {
@@ -160,18 +160,20 @@ ul {
 	}
 }
 
-.show {
+.show, .show > #a-levels > div {
 	opacity: 1;
 	filter: blur(0);
 	transform: translateX(0);
+	transition-duration: 1s !important; /* This is for transitioning TO shown */
 }
 
 @media(prefers-reduced-motion: no-preference) {
 	.hidden {
-		transition: all 1s ease-in-out;
+		transition: all 100ms ease-in-out; /* This is for transitioning TO hidden */
+		transition-delay: 0ms;
 	}
 }
 
-#a-levels > div, #contacts > :not(h1) {
+.show > #a-levels > div, #contacts > :not(h1).show {
 	transition-delay: calc(200ms * var(--order));
 }
