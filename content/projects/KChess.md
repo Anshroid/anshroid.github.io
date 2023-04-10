@@ -114,4 +114,7 @@ broke. Instead, I decided to clone the repo, copy in my own code and swap it out
 change each instance of the Signalk name to my own and check if anything broke at each stage. By the end of it, I had a
 working applet that I could run on the Kindle. I did go through the copied code and tried to understand what was going
 on, but I wasn't really in a position to do much more than comment.
+
+This project is still in active development to add new features! You can check out my progress and ideas on the
+[issues page](https://github.com/Anshroid/KChess/issues/).
             
