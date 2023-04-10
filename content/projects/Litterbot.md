@@ -14,4 +14,5 @@ link: "https://github.com/Manthan-T/litterbot/"
 <main class="blankslate">
     <h1>This article hasn't been written yet!</h1>
     <p>Check back later for updates.</p>
+    <p>Also take a look at the GitHub repository itself for more information.</p>
 </main>
