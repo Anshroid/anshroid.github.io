@@ -7,8 +7,8 @@ frameworks: ["Hugo"]
 skills: ["UI"]
 status: ["WIP", "Article WIP"]
 description: "My portfolio website, made completely from scratch."
-image: /img/placeholder.png
-link: "https://github.com/Anshroid/"
+image: /img/projects/website.png
+link: "https://github.com/Anshroid/anshroid.github.io/"
 ---
 
 <main class="blankslate">

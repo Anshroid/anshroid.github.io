@@ -7,8 +7,8 @@ frameworks: ["Unity"]
 skills: ["Networking"]
 status: ["WIP", "Article WIP"]
 description: "The Confident guess-a-range board game, now online!"
-image: /img/placeholder.png
-link: "https://github.com/Anshroid/"
+image: /img/projects/confident.png
+link: "https://github.com/Anshroid/Confident/"
 ---
 
 <main class="blankslate">

@@ -7,8 +7,8 @@ frameworks: ["Android"]
 skills: ["Networking", "Machine Learning", "Collaboration"]
 status: ["Done", "Competition", "Article WIP"]
 description: "A system for managing patient emergencies and reducing workload. Winner of the CodeSec 2022 qualifier round."
-image: /img/placeholder.png
-link: "https://github.com/Anshroid/"
+image: /img/projects/nhsc.png
+link: "https://github.com/Manthan-T/nhs-coordinator"
 ---
 
 <main class="blankslate">

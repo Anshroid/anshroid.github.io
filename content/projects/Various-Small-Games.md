@@ -7,8 +7,8 @@ frameworks: ["Pygame"]
 skills: []
 status: ["Done","Article WIP"]
 description: "A compilation of the various games I have made/recreated."
-image: /img/placeholder.png
-link: "https://github.com/Anshroid/"
+image: /img/projects/flappy.png
+link: "https://github.com/Anshroid/FlappyBird/"
 ---
 
 <main class="blankslate">

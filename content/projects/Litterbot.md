@@ -7,8 +7,8 @@ frameworks: ["Unity", "React", "Electron"]
 skills: ["Collaboration"]
 status: ["Done", "Competition", "Article WIP"]
 description: "A system for picking up litter and keeping streets clean. Winner of the CodeSec 2022 final."
-image: /img/placeholder.png
-link: "https://github.com/Anshroid/"
+image: /img/projects/litterbot.png
+link: "https://github.com/Manthan-T/litterbot/"
 ---
 
 <main class="blankslate">

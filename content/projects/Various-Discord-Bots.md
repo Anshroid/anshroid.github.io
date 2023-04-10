@@ -7,8 +7,8 @@ frameworks: []
 skills: ["APIs"]
 status: ["Done"]
 description: "A compilation of the various discord bots I have made."
-image: /img/placeholder.png
-link: "https://github.com/Anshroid/"
+image: /img/projects/discordbots.png
+link: "https://github.com/Anshroid/ProxyBot"
 ---
 
 <main class="blankslate">
