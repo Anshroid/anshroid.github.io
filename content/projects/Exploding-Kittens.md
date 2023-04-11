@@ -24,7 +24,17 @@ You can read the original Exploding Kittens rules [here](https://explodingkitten
 is not yet complete, but will probably still be worked on in the future. This ended up being a lot more complicated than
 it seemed, but it also ended up being more of a learning experience than anything else.
 
-## Why did I make it?
+## Technical Details
+
+The app is composed of two main parts: the client and the server. The client is the front-end of the game, which is
+coded in Unity with C#. The server is coded in C# as well, because I'd thought of a very interesting way to implement
+the packet system
+using [reflection](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/reflection)
+over the many iterations of developing this project.
+
+## Blog
+
+I originally planned this project at least two years ago.
 
 I'd been interested in networking for online multiplayer games for a while, having explored the Minecraft packet
 protocol when developing plugins for the game. I'd also used Unity a couple of times before, but never made any progress
@@ -36,20 +46,10 @@ I was unaware of the Netflix mobile app at the time: I knew that there was an Ex
 paid, but I didn't know about the Netflix version which was free. I am still unaware of any desktop versions of this
 app, but I'm sure they probably exist.
 
-## About the app
-
-The app is composed of two main parts: the client and the server. The client is the front-end of the game, which is
-coded in Unity with C#. The server is coded in C# as well, because I'd thought of a very interesting way to implement
-the packet system
-using [reflection](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/reflection)
-over the many iterations of developing this project.
-
-## Developing the app
-
-I originally planned this project at least two years ago to be in Python, but that project was not very well planned and
-I ended up abandoning it. In 2022, I decided to try again with a reboot, again in Python. This set out the basic ideas
-for the layout of a packet that I still use in the current version of the project. I was, however, dissatisfied with the
-state of how I had implemented everything, and ported the project to C# in 2023 when I was getting into C#.
+I wanted the game to be in Python, but that project was not very well planned and I ended up abandoning it. In 2022,
+I decided to try again with a reboot, again in Python. This set out the basic ideas for the layout of a packet that I 
+still use in the current version of the project. I was, however, dissatisfied with the state of how I had implemented 
+everything, and ported the project to C# in 2023 when I was getting into C#.
 
 Originally, while the project was in Python, I had planned to use [pygame](https://www.pygame.org/) for the client,
 which I obviously couldn't use when I switched to C#. My original idea was to create a web app in JavaScript that
@@ -67,7 +67,7 @@ project, I had a lot of fun creating a system to take a raw stream of bytes, spl
 byte of each as an ID, and then use reflection to create an object of the correct type and parse the rest of the packet
 into the appropriate fields. I ended up carrying that system over to this project, and it has worked very well so far.
 
-## The Plan
+## Future Plans
 
 Having mostly completed the packet protocol and made significant progress on the server, I had to turn my attention to
 the front-end. Obviously, having never properly used Unity, I ran into a brick wall. This led to the project's most 
