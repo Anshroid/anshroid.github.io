@@ -1,0 +1,59 @@
+---
+title: "Timetable App"
+layout: "parseapi"
+draft: false
+ignore: true
+---
+
+<h1 class="mt-5 text-underline">Timetable Viewer</h1>
+<h3 class="mt-2">A tool to provide easy access to timetables and insights.</h3>
+
+<script src="/js/timetabling.js" defer></script>
+
+<main class="d-flex flex-column flex-sm-row mt-7 m-6 border rounded">
+    <div class="text-center p-3 border-right">
+        <h4 class="mb-3">Controls</h4>
+        <p><label for="student">View the timetable of&nbsp;</label><select class="form-select" id="student">
+            <option value="">Select...</option>
+        </select></p>
+
+        <div class="requires-selection d-none mb-3">
+            <ul class="list-style-none" id="classes">
+                <li class="color-fg-accent"></li>
+                <li class="color-fg-danger"></li>
+                <li class="color-fg-success"></li>
+                <li class="color-fg-attention"></li>
+            </ul>
+        </div>
+
+        <div class="requires-selection d-none">
+            <p>
+                <label for="insight">Find </label><select class="form-select" id="insight">
+                <option value="">Select...</option>
+                <option value="periods">common periods with</option>
+                <option value="people">other people in</option>
+            </select>&nbsp;
+                <label for="insight-argument">&nbsp;</label><select class="form-select d-none" id="insight-argument"></select>
+            </p>
+        </div>
+    </div>
+
+    <div class="text-center p-5 flex-1">
+        <h4 class="mb-3">Timetable</h4>
+        <div id="timetable-placeholder"><p class="f4">Nothing to see here...</p></div>
+        <div id="timetable-container" class="requires-selection d-none">
+            <table class="border width-full" style="white-space: pre;">
+                <thead>
+                    <tr>
+                        <td class="border">Monday</td>
+                        <td class="border">Tuesday</td>
+                        <td class="border">Wednesday</td>
+                        <td class="border">Thursday</td>
+                        <td class="border">Friday</td>
+                    </tr>
+                </thead>
+                <tbody id="timetable-body"></tbody>
+            </table>
+        </div>
+    </div>
+</main>
