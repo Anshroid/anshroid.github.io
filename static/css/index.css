@@ -29,11 +29,9 @@ body[data-color-mode="light"] #bg-image {
 
 @media(min-width: 1025px) {
 	#bg-image {
-		--x: 0px;
-		--y: 0px;
 		transform: scale(1.1);
 		transform-origin: left;
-		background-position: var(--x) var(--y);
+		background-position: 0 0;
 	}
 }
 
