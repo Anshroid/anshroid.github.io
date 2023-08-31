@@ -29,7 +29,16 @@ submitButton.onclick = async () => {
       return;
     }
 
-    let contents = new TextDecoder("utf-8").decode((await inputFile.stream().getReader().read()).value);
+    const reader = new FileReader();
+    reader.readAsText(inputFile);
+    await new Promise((resolve) => {
+      const listener = () => {
+        reader.removeEventListener("load", listener);
+        resolve();
+      }
+      reader.addEventListener("load", listener);
+    })
+    let contents = reader.result;
     let parser = new DOMParser();
     let ttDocument = parser.parseFromString(contents, "text/html");
 
