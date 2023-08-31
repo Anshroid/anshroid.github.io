@@ -3,14 +3,15 @@ Parse.serverURL = 'https://parseapi.back4app.com/';
 
 const studentSelect = document.querySelector("#student");
 const ttPlaceholder = document.querySelector("#timetable-placeholder");
-const ttContainer = document.querySelector("#timetable-container");
-const ttBody = document.querySelector("#timetable-body")
-const studentClassList = document.querySelector("#classes")
-const insightSelect = document.querySelector("#insight")
-const insightArgumentSelect = document.querySelector("#insight-argument")
+const ttBody = document.querySelector("#timetable-body");
+const studentClassList = document.querySelector("#classes");
+const insightSelect = document.querySelector("#insight");
+const insightArgumentSelect = document.querySelector("#insight-argument");
+const insightOutput = document.querySelector("#insight-output");
 
 const Student = Parse.Object.extend("Student");
-const Class = Parse.Object.extend("Class");
+
+let timetable;
 
 let query = new Parse.Query(Student);
 query.find().then(res => {
@@ -39,6 +40,7 @@ studentSelect.onchange = () => {
     child.innerText = "";
   }
   insightSelect.firstElementChild.selected = true;
+  clearInsightOutput()
   insightArgumentSelect.classList.add("d-none");
 
   if (studentSelect.value === "") {
@@ -63,7 +65,7 @@ studentSelect.onchange = () => {
       })().then(() => {
 
 
-        let timetable = JSON.parse(student.get("ttJson"));
+        timetable = JSON.parse(student.get("ttJson"));
 
         for (const [dayNo, day] of timetable.entries()) {
 
@@ -98,8 +100,20 @@ ${classObj.get("room" + args[1].toString())}`;
   }
 }
 
+function clearInsightOutput() {
+  insightOutput.innerText = "";
+  insightOutput.classList.remove("color-fg-success")
+  insightOutput.classList.remove("color-fg-error");
+  for (const row of ttBody.children) {
+    for (const cell of row.children) {
+      cell.classList.remove("color-bg-success")
+    }
+  }
+}
+
 insightSelect.onchange = () => {
   if (insightSelect.value === "") {
+    clearInsightOutput();
     insightArgumentSelect.classList.add("d-none");
   } else {
     insightArgumentSelect.classList.remove("d-none");
@@ -111,6 +125,47 @@ insightSelect.onchange = () => {
             insightArgumentSelect.appendChild(child.cloneNode(true));
           }
         }
+        break;
+      case "people":
+        break;
+    }
+  }
+}
+
+insightArgumentSelect.onchange = () => {
+  clearInsightOutput()
+  if (insightSelect.value === "") {
+  } else {
+    switch (insightSelect.value) {
+      case "periods":
+        let query = new Parse.Query(Student);
+        query.get(insightArgumentSelect.value).then(student => {
+          let compareTt = JSON.parse(student.get("ttJson"));
+
+          let matches = [];
+          for (let day = 0; day < 5; day++) {
+            for (let period = 0; period < 9; period++) {
+              if (timetable[day][period].split(":")[0] === compareTt[day][period].split(":")[0]) {
+                matches.push([day, period]);
+              }
+            }
+          }
+
+          if (matches.length === 0) {
+            insightOutput.classList.remove("color-fg-success")
+            insightOutput.classList.add("color-fg-error");
+            insightOutput.innerText = "No common periods found! This is probably an error.";
+          } else {
+            insightOutput.classList.add("color-fg-success")
+            insightOutput.classList.remove("color-fg-error");
+            insightOutput.innerText = `Found ${matches.length} common periods!`
+
+            matches.forEach(match => {
+              ttBody.children[match[1]].children[match[0]].classList.add("color-bg-success")
+            })
+          }
+
+        });
         break;
       case "people":
         break;
