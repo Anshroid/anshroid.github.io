@@ -1,0 +1,34 @@
+---
+title: "Timetable Uploader"
+layout: "parseapi"
+draft: false
+ignore: true
+---
+
+<h1 class="mt-5 text-underline">Timetable Uploader</h1>
+<h3 class="mt-2">A tool to easily parse and insert timetables into the database.</h3>
+
+<script src="/js/timetable-upload.js" defer></script>
+
+<form class="mt-7 m-6">
+    <fieldset>
+        <label for="input-file">Select a Timetable .html file: </label>
+        <input class="form-control" id="input-file" type="file"/>
+    </fieldset>
+
+    <fieldset class="mt-5">
+        <label for="password">Input the insert user password: </label>
+        <input class="form-control" id="password" type="password"/>
+    </fieldset>
+
+    <fieldset class="mt-5">
+        <button class="btn btn-primary mt-2" id="upload" type="button">Upload</button>
+    </fieldset>
+</form>
+
+<div class="position-fixed bottom-10 left-0">
+    <div class="Toast Toast--animateIn d-none" id="toast">
+        <span class="Toast-icon"><svg width="14" height="16" viewBox="0 0 14 16" class="octicon octicon-stop" aria-hidden="true"><path fill-rule="evenodd" d="M10 1H4L0 5v6l4 4h6l4-4V5l-4-4zm3 9.5L9.5 14h-5L1 10.5v-5L4.5 2h5L13 5.5v5zM6 4h2v5H6V4zm0 6h2v2H6v-2z"/></svg></span>
+        <span class="Toast-content" id="toast-content"></span>
+    </div>
+</div>

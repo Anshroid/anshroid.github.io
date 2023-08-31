@@ -49,48 +49,51 @@ studentSelect.onchange = () => {
     document.querySelectorAll(".requires-selection").forEach(e => e.classList.remove("d-none"));
 
     let query = new Parse.Query(Student);
-    query.includeAll();
     query.get(studentSelect.value).then(student => {
+      let classes = {}
       !(async () => {
-        studentClassList.children[0].textContent = (await student.get("classA").query().first()).get("ident");
-        studentClassList.children[1].textContent = (await student.get("classB").query().first()).get("ident");
-        studentClassList.children[2].textContent = (await student.get("classC").query().first()).get("ident");
-        studentClassList.children[3].textContent = (await student.get("classD").query().first()).get("ident");
-      })();
-
-      let timetable = JSON.parse(student.get("ttJson"));
-
-      for (const [dayNo, day] of timetable.entries()) {
-
-        for (const [periodNo, period] of day.entries()) {
-          let ident = period.split(":")[0];
-          let args;
-          if (period.includes(":")) {
-            args = period.split(":")[1].split(",");
-            if (args[0] === "") {
-              args[0] = 1;
-            }
-            if (args[1] === "" || args[1] === undefined) {
-              args[1] = 1;
-            }
-          } else {
-            args = [1, 1];
-          }
-
-          if (ident === "fr") {
-            continue;
-          }
-
-          let query = new Parse.Query(Class);
-          query.equalTo("ident", ident);
-          query.first().then(_class => {
-            ttBody.children[periodNo].children[dayNo].innerHTML = `${_class.get("displayName")}
-${ident}
-${_class.get("teacher" + args[0].toString())}
-${_class.get("room" + args[1].toString())}`;
-          });
+        let i = 0;
+        for (const classType of ["A", "B", "C", "D", "PDT", "Discussion", "Enrichment"]) {
+          let classObj = await student.get(`class${classType}`).fetch()
+          classes[classObj.get("ident")] = classObj;
+          if (classObj.get("ident").includes("Di")) continue;
+          studentClassList.children[i].textContent = classObj.get("ident");
+          i++;
         }
-      }
+      })().then(() => {
+
+
+        let timetable = JSON.parse(student.get("ttJson"));
+
+        for (const [dayNo, day] of timetable.entries()) {
+
+          for (const [periodNo, period] of day.entries()) {
+            let ident = period.split(":")[0];
+            let args;
+            if (period.includes(":")) {
+              args = period.split(":")[1].split(",");
+              if (args[0] === "") {
+                args[0] = 1;
+              }
+              if (args[1] === "" || args[1] === undefined) {
+                args[1] = 1;
+              }
+            } else {
+              args = [1, 1];
+            }
+
+            if (ident === "fr") {
+              continue;
+            }
+
+            let classObj = classes[ident]
+            ttBody.children[periodNo].children[dayNo].innerHTML = `${classObj.get("displayName")}
+${ident}
+${classObj.get("teacher" + args[0].toString())}
+${classObj.get("room" + args[1].toString())}`;
+          }
+        }
+      });
     });
   }
 }

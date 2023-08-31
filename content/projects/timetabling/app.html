@@ -3,6 +3,9 @@ title: "Timetable App"
 layout: "parseapi"
 draft: false
 ignore: true
+aliases:
+- /timetabling
+- /timetabling/app
 ---
 
 <h1 class="mt-5 text-underline">Timetable Viewer</h1>
@@ -23,6 +26,8 @@ ignore: true
                 <li class="color-fg-danger"></li>
                 <li class="color-fg-success"></li>
                 <li class="color-fg-attention"></li>
+                <li class="color-fg-done"></li>
+                <li class="color-fg-default"></li>
             </ul>
         </div>
 
@@ -38,7 +43,7 @@ ignore: true
         </div>
     </div>
 
-    <div class="text-center p-5 flex-1">
+    <div class="text-center p-5 flex-1 overflow-x-scroll">
         <h4 class="mb-3">Timetable</h4>
         <div id="timetable-placeholder"><p class="f4">Nothing to see here...</p></div>
         <div id="timetable-container" class="requires-selection d-none">
