@@ -12,6 +12,14 @@ const insightOutput = document.querySelector("#insight-output");
 const Student = Parse.Object.extend("Student");
 
 let timetable;
+let classes;
+
+function getType(ident) {
+  return ident.at(2) !== "y" ? ident.at(2) :
+    ident.includes("Ap") ? "PDT" :
+      ident.includes("Di") ? "Discussion" : "Enrichment";
+}
+
 
 let query = new Parse.Query(Student);
 query.find().then(res => {
@@ -52,7 +60,7 @@ studentSelect.onchange = () => {
 
     let query = new Parse.Query(Student);
     query.get(studentSelect.value).then(student => {
-      let classes = {}
+      classes = {}
       !(async () => {
         let i = 0;
         for (const classType of ["A", "B", "C", "D", "PDT", "Discussion", "Enrichment"]) {
@@ -103,7 +111,7 @@ ${classObj.get("room" + args[1].toString())}`;
 function clearInsightOutput() {
   insightOutput.innerText = "";
   insightOutput.classList.remove("color-fg-success")
-  insightOutput.classList.remove("color-fg-error");
+  insightOutput.classList.remove("color-fg-severe");
   for (const row of ttBody.children) {
     for (const cell of row.children) {
       cell.classList.remove("color-bg-success")
@@ -112,8 +120,8 @@ function clearInsightOutput() {
 }
 
 insightSelect.onchange = () => {
+  clearInsightOutput();
   if (insightSelect.value === "") {
-    clearInsightOutput();
     insightArgumentSelect.classList.add("d-none");
   } else {
     insightArgumentSelect.classList.remove("d-none");
@@ -127,7 +135,10 @@ insightSelect.onchange = () => {
         }
         break;
       case "people":
-        break;
+        insightArgumentSelect.appendChild(new Option("Select...", "", true));
+        for (const classIdent of Object.keys(classes)) {
+          insightArgumentSelect.appendChild(new Option(classIdent, classIdent));
+        }
     }
   }
 }
@@ -138,7 +149,7 @@ insightArgumentSelect.onchange = () => {
   } else {
     switch (insightSelect.value) {
       case "periods":
-        let query = new Parse.Query(Student);
+        query = new Parse.Query(Student);
         query.get(insightArgumentSelect.value).then(student => {
           let compareTt = JSON.parse(student.get("ttJson"));
 
@@ -153,11 +164,11 @@ insightArgumentSelect.onchange = () => {
 
           if (matches.length === 0) {
             insightOutput.classList.remove("color-fg-success")
-            insightOutput.classList.add("color-fg-error");
+            insightOutput.classList.add("color-fg-severe");
             insightOutput.innerText = "No common periods found! This is probably an error.";
           } else {
             insightOutput.classList.add("color-fg-success")
-            insightOutput.classList.remove("color-fg-error");
+            insightOutput.classList.remove("color-fg-severe");
             insightOutput.innerText = `Found ${matches.length} common periods!`
 
             matches.forEach(match => {
@@ -168,7 +179,24 @@ insightArgumentSelect.onchange = () => {
         });
         break;
       case "people":
-        break;
+        insightOutput.classList.add("color-fg-success")
+        insightOutput.classList.remove("color-fg-severe");
+
+        let ident = insightArgumentSelect.value;
+        query = new Parse.Query(Student);
+        query.equalTo(`class${getType(ident)}`, classes[ident]);
+        query.find().then(students => {
+          for (const student of students) {
+            if (student.id === studentSelect.value) continue;
+            insightOutput.innerText += `${student.get("firstName")}\n`
+          }
+
+          if (insightOutput.innerText === "") {
+            insightOutput.classList.remove("color-fg-success")
+            insightOutput.classList.add("color-fg-severe");
+            insightOutput.innerText = "No other people found!";
+          }
+        });
     }
   }
 }
