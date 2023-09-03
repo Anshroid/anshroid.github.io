@@ -66,6 +66,7 @@ submitButton.onclick = async () => {
     console.groupCollapsed("Parsing timetable structure...");
     for (const [index, cell] of ttDocument.querySelector("table").querySelector("table").querySelectorAll("table").entries()) {
       let ident = cell.children[0].children[1].innerText.trim()
+      ident = ident.replace("/Am", "/Ma")
 
       if (!ident) {
         ttJson[index % 5][Math.floor(index / 5)] = "fr";

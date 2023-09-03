@@ -96,7 +96,7 @@ studentSelect.onchange = () => {
               continue;
             }
 
-            let classObj = classes[ident]
+            let classObj = classes[ident.replace("/Am", "/Ma")]
             ttBody.children[periodNo].children[dayNo].innerHTML = `${classObj.get("displayName")}
 ${ident}
 ${classObj.get("teacher" + args[0].toString())}
