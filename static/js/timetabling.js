@@ -14,20 +14,12 @@ const Student = Parse.Object.extend("Student");
 let timetable;
 let classes;
 
+//region Utility Functions
 function getType(ident) {
   return ident.at(2) !== "y" ? ident.at(2) :
     ident.includes("Ap") ? "PDT" :
       ident.includes("Di") ? "Discussion" : "Enrichment";
 }
-
-
-let query = new Parse.Query(Student);
-query.find().then(res => {
-  res.forEach(student => {
-    let option = new Option(student.get("firstName"), student.id);
-    studentSelect.appendChild(option);
-  })
-})
 
 function resetTimetable() {
   ttBody.replaceChildren();
@@ -41,6 +33,23 @@ function resetTimetable() {
     ttBody.appendChild(row);
   }
 }
+
+function getNextDay() {
+  // let nextDay = dayNo + 1 === ((new Date().getDay() % 6) + ((new Date().getDay() % 6) === 0 || new Date().getHours() > 15 || (new Date().getHours() === 15 && new Date().getMinutes() >= 35)))
+  let currentDay = new Date().getDay() % 6;
+  let weekend = currentDay === 0;
+  let isDayOver = weekend || new Date().getHours() > 15 || (new Date().getHours() === 15 && new Date().getMinutes() >= 35);
+  return currentDay - 1 + isDayOver;
+}
+//endregion
+
+let query = new Parse.Query(Student);
+query.find().then(res => {
+  res.forEach(student => {
+    let option = new Option(student.get("firstName"), student.id);
+    studentSelect.appendChild(option);
+  })
+})
 
 studentSelect.onchange = () => {
   resetTimetable();
@@ -66,18 +75,21 @@ studentSelect.onchange = () => {
         for (const classType of ["A", "B", "C", "D", "PDT", "Discussion", "Enrichment"]) {
           let classObj = await student.get(`class${classType}`).fetch()
           classes[classObj.get("ident")] = classObj;
+
           if (classObj.get("ident").includes("Di")) continue;
+
           studentClassList.children[i].textContent = classObj.get("ident");
           i++;
         }
       })().then(() => {
-
-
         timetable = JSON.parse(student.get("ttJson"));
 
         for (const [dayNo, day] of timetable.entries()) {
+          let isNextDay = dayNo === getNextDay();
 
           for (const [periodNo, period] of day.entries()) {
+            if (isNextDay) ttBody.children[periodNo].children[dayNo].classList.add("color-bg-attention")
+
             let ident = period.split(":")[0];
             let args;
             if (period.includes(":")) {
@@ -108,6 +120,7 @@ ${classObj.get("room" + args[1].toString())}`;
   }
 }
 
+//region Insights
 function clearInsightOutput() {
   insightOutput.innerText = "";
   insightOutput.classList.remove("color-fg-success")
@@ -115,6 +128,7 @@ function clearInsightOutput() {
   for (const row of ttBody.children) {
     for (const cell of row.children) {
       cell.classList.remove("color-bg-success")
+      cell.classList.replace("color-bg-accent", "color-bg-attention")
     }
   }
 }
@@ -172,7 +186,10 @@ insightArgumentSelect.onchange = () => {
             insightOutput.innerText = `Found ${matches.length} common periods!`
 
             matches.forEach(match => {
-              ttBody.children[match[1]].children[match[0]].classList.add("color-bg-success")
+              let success = ttBody.children[match[1]].children[match[0]].classList.replace("color-bg-attention", "color-bg-accent")
+              if (!success) {
+                ttBody.children[match[1]].children[match[0]].classList.add("color-bg-success")
+              }
             })
           }
 
@@ -200,3 +217,4 @@ insightArgumentSelect.onchange = () => {
     }
   }
 }
+//endregion
