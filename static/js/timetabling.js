@@ -159,7 +159,7 @@ insightSelect.onchange = () => {
 
 insightArgumentSelect.onchange = () => {
   clearInsightOutput()
-  if (insightSelect.value === "") {
+  if (insightArgumentSelect.value === "") {
   } else {
     switch (insightSelect.value) {
       case "periods":
