@@ -128,10 +128,11 @@ submitButton.onclick = async () => {
     console.groupCollapsed("Checking existing classes...")
     !(async () => {
       for (const type of Object.keys(classes)) {
+        let ident;
         if (classes[type] === undefined) {
-          let ident = "ygJGg1jM3s";
+          ident = "ygJGg1jM3s";
         } else {
-          let ident = classes[type].get("ident");
+          ident = classes[type].get("ident");
         }
         console.log(`Querying ${ident}`)
 
