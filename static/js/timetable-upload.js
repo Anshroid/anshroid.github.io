@@ -125,16 +125,14 @@ submitButton.onclick = async () => {
     }
     console.groupEnd();
 
-    Object.entries(classes).forEach(entry => {
-      if (entry[1] === undefined) {
-        classes[entry[0]] = "ygJGg1jM3s"
-      }
-    })
-
     console.groupCollapsed("Checking existing classes...")
     !(async () => {
       for (const type of Object.keys(classes)) {
-        let ident = classes[type].get("ident");
+        if (classes[type] === undefined) {
+          let ident = "ygJGg1jM3s";
+        } else {
+          let ident = classes[type].get("ident");
+        }
         console.log(`Querying ${ident}`)
 
         let query = new Parse.Query(Class);
