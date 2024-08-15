@@ -125,7 +125,11 @@ submitButton.onclick = async () => {
     }
     console.groupEnd();
 
-    if (!Object.values(classes).every(v => v !== undefined)) toast("Not all subjects could be found!", "error");
+    Object.entries(classes).forEach(entry => {
+      if (entry[1] === undefined) {
+        classes[entry[0]] = "ygJGg1jM3s"
+      }
+    })
 
     console.groupCollapsed("Checking existing classes...")
     !(async () => {
