@@ -130,7 +130,7 @@ submitButton.onclick = async () => {
       for (const type of Object.keys(classes)) {
         let ident;
         if (classes[type] === undefined) {
-          ident = "ygJGg1jM3s";
+          ident = "N/A";
         } else {
           ident = classes[type].get("ident");
         }
