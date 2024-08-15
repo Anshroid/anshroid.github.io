@@ -42,7 +42,7 @@ submitButton.onclick = async () => {
     let parser = new DOMParser();
     let ttDocument = parser.parseFromString(contents, "text/html");
 
-    let [name, form] = ttDocument.querySelector(".TitleBold").innerText.split(", ")[1].split(" 12");
+    let [name, form] = ttDocument.querySelector(".TitleBold").innerText.split(", ")[1].split(/\ 1\d/);
 
     let inProgress = {};
     let classes = {
