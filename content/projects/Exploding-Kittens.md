@@ -1,12 +1,11 @@
 ---
-title: "Exploding Kittens"
+title: "Exploding Kittens (.NET)"
 date: 2023-02-19T18:26:13Z
 draft: false
 languages: [ "C#" ]
-frameworks: [ "Unity" ]
 skills: [ "Backend", "Frontend", "Networking" ]
-status: [ "WIP" ]
-description: "The hit card game, now online!"
+tags: []
+description: "My 3rd (second last!) attempt at making Exploding Kittens online!"
 image: /img/projects/explodingkittens.jpg
 link: "https://github.com/Anshroid/ExplodingKittens.NET"
 ---
@@ -20,9 +19,9 @@ with my friends as well as to learn more about Unity and networking.
 
 ## How to play
 
-You can read the original Exploding Kittens rules [here](https://explodingkittens.com/pages/rules). The online version
-is not yet complete, but will probably still be worked on in the future. This ended up being a lot more complicated than
-it seemed, but it also ended up being more of a learning experience than anything else.
+You can read the original Exploding Kittens rules [here](https://explodingkittens.com/pages/rules). This version was 
+never finished, but the [newer version](/projects/exploding-kittens-js) does work! This ended up being a lot more 
+complicated than it seemed, but it also ended up being a great learning experience nonetheless.
 
 ## Technical Details
 
@@ -67,12 +66,7 @@ project, I had a lot of fun creating a system to take a raw stream of bytes, spl
 byte of each as an ID, and then use reflection to create an object of the correct type and parse the rest of the packet
 into the appropriate fields. I ended up carrying that system over to this project, and it has worked very well so far.
 
-## Future Plans
-
 Having mostly completed the packet protocol and made significant progress on the server, I had to turn my attention to
-the front-end. Obviously, having never properly used Unity, I ran into a brick wall. This led to the project's most 
-recent break, which I will attempt to fix in the future. I have a lot of ideas for the future of this project, but I
-have many other things to work on and do, so I'm not sure when I will get back to it.
-
-Despite the fact that I have not yet finished this project, I have learned a lot from it, and I am still very proud of
-the work I have done. 
+the front-end. Obviously, having never properly used Unity, I ran into a brick wall. This led to the end of this 
+iteration of the project, though I learnt a lot from what I did and am very proud of how far it got. The follow-up to
+this project was the fourth iteration, which you can read about [here](/projects/exploding-kittens-js).

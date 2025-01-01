@@ -9,7 +9,7 @@
             <p class="h1">Hello!</p>
         </div>
 
-        <p class="f3">I'm Anshul (a.k.a. Anshroid), an A Level student and hobbyist backend developer!</p>
+        <p class="f3">I'm Anshul (a.k.a. Anshroid), an A Level student and hobbyist developer!</p>
 
         <a href="https://github.com/Anshroid">
             <button class="btn btn-primary mr-2" type="button">
@@ -39,7 +39,7 @@
 
         <p class="h2">Featured Projects:</p>
         <div class="container-lg d-flex flex-column flex-lg-row">
-            {{ range last 3 (where .Site.RegularPages "Params.ignore" "!=" "true") }}
+            {{ range first 3 (where .Site.RegularPages "Params.ignore" "!=" "true") }}
                 <div class="col-lg-4 Box p-3 m-3 anim-hover-grow color-shadow-large d-flex flex-column position-relative">
                     <div class="d-flex flex-column flex-sm-row flex-1">
                         <img src="{{ .Params.image }}" alt="Project Image"

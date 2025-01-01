@@ -1,7 +1,7 @@
 ---
 title: "Prizmchess"
 date: 2023-02-19T18:12:13Z
-draft: false
+draft: true
 languages: ["C++"]
 frameworks: []
 skills: ["UI", "Collaboration"]

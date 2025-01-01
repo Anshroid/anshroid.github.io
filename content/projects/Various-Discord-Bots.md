@@ -1,7 +1,7 @@
 ---
 title: "Various Discord Bots"
 date: 2023-02-19T18:44:36Z
-draft: false
+draft: true
 languages: ["Python"]
 frameworks: []
 skills: ["APIs"]

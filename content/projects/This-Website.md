@@ -5,13 +5,19 @@ draft: false
 languages: ["HTML/CSS","JavaScript"]
 frameworks: ["Hugo"]
 skills: ["UI"]
-status: ["WIP", "Article WIP"]
+status: ["Done"]
 description: "My portfolio website, made completely from scratch."
 image: /img/projects/website.png
 link: "https://github.com/Anshroid/anshroid.github.io/"
 ---
 
-<main class="blankslate">
-    <h1>This article hasn't been written yet!</h1>
-    <p>Check back later for updates.</p>
-</main>
+## Technical Details
+
+The website is a Hugo app with layouts built from scratch using pure CSS and JS.
+
+## Blog
+
+I've wanted to make a website for a long time. I decided it was a good opportunity for me to practice my frontend skills
+while demonstrating the projects I've worked on in a portfolio, so I decided to make this. Possibly the hardest part
+about making this website has been actually writing the articles for it! It has been a fun project, however, to put
+everything together.

@@ -56,7 +56,7 @@ document.querySelectorAll(".dropdown-item").forEach((item) => {
             });
 
             removeOverlay();
-        }, 2000);
+        }, 1200);
     });
 })
 

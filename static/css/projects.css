@@ -3,7 +3,7 @@
 }
 
 #overlay {
-    transition: 0.1s;
+    transition: 0.01s;
     position: fixed;
     top: 0;
     left: 0;
