@@ -2,7 +2,7 @@ let statusSpan = document.getElementById("status");
 let connectBtn = document.getElementById("connect-button");
 let sentenceDisplay = document.getElementById("sentence");
 
-let client = new Colyseus.Client('ws://anshroid.ddns.net:7777');
+let client = new Colyseus.Client('wss://anshroid.ddns.net:7777');
 let room = undefined;
 
 console.log("client connected");

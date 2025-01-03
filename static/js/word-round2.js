@@ -4,7 +4,7 @@ let connectBtn = document.getElementById("connect-button");
 let wordInput = document.getElementById("word");
 let submitBtn = document.getElementById("submit-button");
 
-let client = new Colyseus.Client('ws://anshroid.ddns.net:7777');
+let client = new Colyseus.Client('wss://anshroid.ddns.net:7777');
 let room = undefined;
 let ourIndex = -1;
 let distance = Infinity;
