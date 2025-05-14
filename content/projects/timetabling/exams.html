@@ -1,0 +1,68 @@
+---
+title: "Exam App"
+layout: "other"
+draft: false
+ignore: true
+aliases:
+- /timetabling/exams
+---
+
+<h1 class="mt-5 text-underline">A Level Exam Viewer</h1>
+<h3 class="mt-2">A tool to show everyone's exams.</h3>
+
+<script src="/js/exams.js" type="module" defer></script>
+
+<main class="d-flex flex-column flex-sm-row mt-7 m-6 border rounded">
+    <div class="text-center p-3 border-right">
+        <h4 class="mb-3">Controls</h4>
+        <label>Show the following exams:&nbsp;</label>
+        <details id="AQA">
+            <summary>AQA</summary>
+        </details>
+
+        <span class="dropdown-divider"></span>
+
+        <details id="OCR">
+            <summary>OCR</summary>
+        </details>
+
+        <span class="dropdown-divider"></span>
+
+        <details id="Edexcel">
+            <summary>Edexcel</summary>
+        </details>
+
+        <span class="dropdown-divider"></span>
+
+        <details id="Eduqas">
+            <summary>WJEC / Eduqas</summary>
+        </details>
+
+        <span class="dropdown-divider"></span>
+
+        <details id="Other">
+            <summary>Other</summary>
+        </details>
+
+        <button class="btn mt-5" id="clear-btn">Clear</button>
+    </div>
+
+    <div class="text-center p-5 flex-1 overflow-x-scroll">
+        <h4 class="mb-3">Timetable</h4>
+        <div id="timetable-container" class="requires-selection">
+            <table class="border width-full" style="white-space: pre;">
+                <thead>
+                <tr>
+                    <th class="border col-2">Monday</th>
+                    <th class="border col-2">Tuesday</th>
+                    <th class="border col-2">Wednesday</th>
+                    <th class="border col-2">Thursday</th>
+                    <th class="border col-2">Friday</th>
+                </tr>
+                </thead>
+                <tbody id="timetable-body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
