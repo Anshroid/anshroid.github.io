@@ -27,7 +27,7 @@ function toggle(exams, boardName, subjectName) {
             if (el.parentNode.childElementCount === 2) el.parentNode.hidden = true;
             el.remove();
         });
-        storageSelected.remove(id);
+        storageSelected = storageSelected.filter(v => v !== id);
         window.localStorage.setItem("exams-selected", JSON.stringify(storageSelected));
         return;
     }
@@ -115,5 +115,6 @@ document.querySelector("#clear-btn").onclick = () => {
     document.querySelectorAll("td > div > :not(:nth-child(1))").forEach(el => el.remove());
     document.querySelectorAll("td > div").forEach(el => el.hidden = true);
 
-    window.localStorage.setItem("exams-selected", "[]");
+    storageSelected = [];
+    window.localStorage.setItem("exams-selected", JSON.stringify(storageSelected));
 };
