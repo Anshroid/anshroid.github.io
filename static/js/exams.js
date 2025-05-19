@@ -38,7 +38,7 @@ function toggle(exams, boardName, subjectName) {
         let el = document.createElement("p");
         el.classList.add(id);
         el.append(`${boardName === "Other" ? "" : boardName} ${subjectName} ${exam.name} (${exam.time})`.trimStart());
-        let box = ttBody.children[exam.date[0]].children[exam.date[1]].children[+!exam.am];
+        let box = ttBody.children[exam.date[0]].children[exam.date[1]].children[0].children[1+!exam.am];
         box.hidden = false;
         box.appendChild(el);
     });
@@ -54,6 +54,7 @@ for (let i = 0; i < 6; i++) {
         const cell = document.createElement("td");
         cell.classList.add("border");
 
+
         if (i < date.getWeek() - 20) {
             cell.classList.add("color-bg-success");
         } else if (i === date.getWeek() - 20) {
@@ -66,17 +67,30 @@ for (let i = 0; i < 6; i++) {
 
         row.setAttribute("data-i", i.toString());
 
-        cell.style.height = "80px";
         row.appendChild(cell);
 
-        let am = cell.appendChild(document.createElement("div"));
-        let pm = cell.appendChild(document.createElement("div"));
+        let cont = document.createElement("div");
+        cont.classList.add("d-flex", "flex-column", "height-full");
+        cont.style.minHeight = "80px";
+        cell.appendChild(cont);
+        cont.style.padding = "5px";
+        cont.style.gap = "5px";
 
-        am.classList.add("border", "rounded-lg", "m-2");
+        let changedDate = new Date(2025, 4, 12);
+        changedDate.setDate(changedDate.getDate() + i*7 + j);
+        let dateP = document.createElement("p");
+        dateP.classList.add("text-small", "mb-auto", "color-fg-subtle");
+        cont.appendChild(dateP);
+        dateP.append(changedDate.toLocaleDateString())
+
+        let am = cont.appendChild(document.createElement("div"));
+        let pm = cont.appendChild(document.createElement("div"));
+
+        am.classList.add("border", "rounded-lg");
         am.hidden = true;
         am.appendChild(document.createElement("h5")).append("AM");
 
-        pm.classList.add("border", "rounded-lg", "m-2");
+        pm.classList.add("border", "rounded-lg");
         pm.hidden = true;
         pm.appendChild(document.createElement("h5")).append("PM");
     }
@@ -112,8 +126,8 @@ boards.forEach(board => {
 
 document.querySelector("#clear-btn").onclick = () => {
     document.querySelectorAll("input[type=checkbox]").forEach(el => el.checked = false);
-    document.querySelectorAll("td > div > :not(:nth-child(1))").forEach(el => el.remove());
-    document.querySelectorAll("td > div").forEach(el => el.hidden = true);
+    document.querySelectorAll("td > div > div > :not(:nth-child(1))").forEach(el => el.remove());
+    document.querySelectorAll("td > div > div").forEach(el => el.hidden = true);
 
     storageSelected = [];
     window.localStorage.setItem("exams-selected", JSON.stringify(storageSelected));
