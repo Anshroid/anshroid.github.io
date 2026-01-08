@@ -1,0 +1,98 @@
+@media(min-width: 1075px) {
+	.glasscarpet-image {
+		height: 220px !important;
+		margin: 35px !important;
+	}
+}
+
+.glasscarpet-image {
+	animation: noteMove steps(var(--rotstep, 1), jump-start) var(--rotspeed, 0.5s) infinite;
+	height: 200px;
+	margin: 20px;
+}
+
+.glasscarpet-image:hover {
+	scale: 115%;
+	--rotspeed: 0.4s;
+	--rotstep: 2;
+}
+
+.glasscarpet-image:active {
+	scale: 120%;
+}
+
+.glasscarpet-image:nth-child(1) {
+	--start-rot: -2deg;
+	--end-rot: 0deg;
+}
+
+.glasscarpet-image:nth-child(2) {
+	--start-rot: 5deg;
+	--end-rot: 3deg;
+}
+
+.glasscarpet-image:nth-child(3) {
+	--start-rot: -1.5deg;
+	--end-rot: 0.5deg;
+}
+
+.glasscarpet-image:nth-child(4) {
+	--start-rot: 0deg;
+	--end-rot: -3deg;
+}
+
+.glasscarpet-image:nth-child(5) {
+	--start-rot: -2deg;
+	--end-rot: 1deg;
+}
+
+.glasscarpet-image:nth-child(6) {
+	--start-rot: 1deg;
+	--end-rot: 3deg;
+}
+
+.glasscarpet-image:nth-child(7) {
+	--start-rot: -2deg;
+	--end-rot: 0deg;
+}
+
+#name {
+	background: linear-gradient(45deg, deepskyblue, violet, deepskyblue);
+	background-size: 200% 100%;
+	animation: gradient 7s ease infinite;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+#pfp {
+	transition: 0.2s;
+}
+
+#pfp:hover {
+	scale: 110%;
+	transition: 0.5s;
+}
+
+@keyframes noteMove {
+	0% {
+		rotate: var(--start-rot);
+	}
+	50% {
+		rotate: var(--end-rot);
+	}
+	100% {
+		rotate: var(--start-rot);
+	}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0 50%;
+	}
+}
