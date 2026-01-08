@@ -1,0 +1,79 @@
+#hand {
+    padding: 10px;
+}
+
+#hand > img {
+    width: 150px;
+    border-radius: 10px;
+    animation: card-enter 0.4s forwards ease-in-out;
+    border: black 1px solid;
+    transition: transform 0.1s;
+}
+
+#deck, #discard, #buffer {
+    height: 200px;
+    min-width: 300px;
+    padding: 20px;
+    --translate-y: 20px;
+}
+
+#discard {
+    height: 100px;
+    --translate-y: -70px;
+}
+
+#buffer {
+    height: 200px;
+    gap: 5px;
+}
+
+#buffer > img {
+    --real: url("/img/hns/discard.png");
+    border-radius: 10px;
+    animation: card-enter 0.4s forwards ease-in-out;
+    transform: rotateY(180deg);
+    transition: scale 0.1s;
+    border: black 1px solid;
+}
+
+:is(#deck, #discard) > img {
+    --index: 0;
+    --rotate: 25deg;
+    --drawing: 0px;
+    border-radius: 10px;
+    width: 150px;
+    position: absolute;
+    transform: translate(-75px, var(--translate-y)) rotate3d(1,0,0,80deg) rotate3d(0,0,1,var(--rotate)) translate3d(0px, 0px, calc(var(--index)*1px + var(--drawing)));
+    perspective: 1000px;
+    transition: transform 1s;
+}
+
+.flipped {
+    animation: flip 0.4s forwards ease-in-out !important;
+}
+
+.buffer-selected {
+    scale: 1.1;
+}
+
+.hand-selected {
+    transform: scale(1.1);
+}
+
+@keyframes card-enter {
+    from {
+        scale: 0.0;
+    }
+
+    to {
+        scale: 1;
+        rotate: 360deg;
+    }
+}
+
+@keyframes flip {
+    to {
+        transform: rotateY(360deg);
+        content: var(--real)
+    }
+}

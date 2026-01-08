@@ -1,0 +1,53 @@
+---
+title: "Hide and Seek Deck"
+layout: "other"
+draft: false
+ignore: true
+css: hns
+aliases:
+- /hns
+---
+
+<h1 class="mt-5 text-underline">
+    <img src="https://cdn.discordapp.com/emojis/1309260892503937114.webp?size=32" alt="Jet Lag: The Game" class="mr-2 v-align-middle" />
+    Hide and Seek!
+    <img src="https://cdn.discordapp.com/emojis/1309260892503937114.webp?size=32" alt="Jet Lag: The Game" class="ml-2 v-align-middle" />
+</h1>
+
+<script src="/js/hns.js" defer></script>
+
+<div class="mt-7 m-6">
+    <div class="d-flex flex-wrap flex-justify-center align-center">
+        <div id="deck"></div>
+        <!--<div id="discard"><img src="/img/hns/discard.png" style="--rotate: -59deg" /></div>-->
+        <div class="d-none width-full">
+            <div id="buffer" class="d-flex flex-row overflow-scroll"></div>
+            <button class="btn btn-primary mt-2 disabled" id="keep-button">Keep 0 cards</button>
+        </div>
+    </div>
+
+
+
+    <br>
+
+    <h3>Your hand (<span id="card-count">0</span> cards):</h3>
+
+    <div class="d-flex flex-row overflow-scroll" id="hand" style="gap: -20px;"></div>
+
+    <!--
+    <label for="showall" class="mr-1">Show all cards in your hand?</label>
+    <input type="checkbox" id="showall" class="form-checkbox" checked />
+
+    <br>
+
+    <label for="cardpicker" class="mr-1">Show specific card: </label>
+    <select id="cardpicker" class="form-select">
+        <option selected disabled>Choose a card...</option>
+    </select>
+    -->
+
+    <br><br>
+
+    <button class="btn btn-primary mt-2 disabled" id="discard-button">Play/discard 0 cards</button>
+    <button class="btn btn-danger mt-2" id="reset-button">Reset</button>
+</div>
