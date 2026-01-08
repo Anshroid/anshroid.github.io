@@ -48,7 +48,7 @@ function addHand(card) {
     newImg.onclick = function () {
         discardCount += newImg.classList.toggle('hand-selected') ? 1 : -1;
         discardElem.innerText = `Play/discard ${discardCount} cards`;
-        discardElem.classList.toggle('disabled', discardCount === 0);
+        discardElem.disabled = discardCount === 0 || !bufferElem.parentElement.classList.contains('d-none');
     };
 }
 
@@ -61,6 +61,8 @@ let keepCount = 0;
 deckElem.onclick = function () {
     let target = deckElem.lastChild;
     target.style.setProperty("--drawing", "1000px");
+    discardElem.disabled = true;
+
     setTimeout(() => {
         target.remove()
         let card = deck.pop();
@@ -78,7 +80,7 @@ deckElem.onclick = function () {
             newImg.onclick = function () {
                 keepCount += newImg.classList.toggle('buffer-selected') ? 1 : -1;
                 keepElem.innerText = `Keep ${keepCount} cards`;
-                keepElem.classList.toggle('disabled', keepCount === 0);
+                keepElem.disabled = keepCount === 0;
             }
         }
     }, 500)
@@ -87,9 +89,7 @@ deckElem.onclick = function () {
 keepElem.onclick = function () {
     let cards = document.querySelectorAll('.buffer-selected');
     for (const cardElem of cards) {
-        console.log(cardElem.style.getPropertyValue("--real"))
-        console.log(parseInt(cardElem.style.getPropertyValue("--real").match("\\d+")[0]));
-        let card = parseInt(cardElem.style.getPropertyValue("--real").match("\\d+")[0]);
+        let card = parseInt(cardElem.style.getPropertyValue("--real").match("/img/hns/(\\d+).png")[1]);
         hand.push(card);
         addHand(card);
     }
@@ -98,7 +98,28 @@ keepElem.onclick = function () {
     while (bufferElem.firstChild) {bufferElem.removeChild(bufferElem.lastChild)}
     keepCount = 0;
     keepElem.innerText = `Keep 0 cards`;
-    keepElem.classList.add('disabled');
+    keepElem.disabled = true;
+
+    cardCountElem.innerText = hand.length;
+
+    discardElem.disabled = discardCount === 0;
+
+    localStorage.setItem('deck', JSON.stringify(deck));
+    localStorage.setItem('hand', JSON.stringify(hand));
+}
+
+discardElem.onclick = function () {
+    let cards = document.querySelectorAll('.hand-selected');
+    for (const cardElem of cards) {
+        let card = parseInt(cardElem.src.match("/img/hns/(\\d+).png")[1]);
+        console.log(cardElem.src)
+        cardElem.remove();
+        hand.splice(hand.indexOf(card), 1);
+    }
+
+    discardCount = 0;
+    discardElem.innerText = `Discard 0 cards`;
+    discardElem.disabled = true;
 
     cardCountElem.innerText = hand.length;
 
