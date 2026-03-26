@@ -1,0 +1,36 @@
+#deck {
+    height: 200px;
+    min-width: 300px;
+    padding: 20px;
+    --translate-y: 20px;
+}
+
+#deck > img {
+    --index: 0;
+    --rotate: 25deg;
+    --offset-r: 0deg;
+    --offset-x: 0px;
+    --offset-y: 0px;
+    --drawing: 0px;
+    border-radius: 10px;
+    width: 150px;
+    position: absolute;
+    transform: translate(-75px, var(--translate-y)) rotate3d(1,0,0,80deg) rotate3d(0,0,1,calc(var(--rotate) + var(--offset-r))) translate3d(var(--offset-x), var(--offset-y), calc(var(--index)*1px + var(--drawing)));
+    perspective: 1000px;
+    transition: transform 1s;
+}
+
+#challenge {
+    /*animation: card-enter 0.4s ease-in-out forwards;*/
+}
+
+@keyframes card-enter {
+    from {
+        scale: 0.0;
+    }
+
+    to {
+        scale: 1;
+        rotate: 360deg;
+    }
+}

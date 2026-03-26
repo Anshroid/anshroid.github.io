@@ -1,0 +1,47 @@
+---
+title: "Tag Challenge Deck"
+layout: "other"
+draft: false
+ignore: true
+css: tag
+aliases:
+- /tag
+---
+
+<h1 class="mt-5 text-underline">
+    <img src="https://cdn.discordapp.com/emojis/1309260892503937114.webp?size=32" alt="Jet Lag: The Game"
+         class="mr-2 v-align-middle"/>
+    Mini-Tag!
+    <img src="https://cdn.discordapp.com/emojis/1309260892503937114.webp?size=32" alt="Jet Lag: The Game"
+         class="ml-2 v-align-middle"/>
+</h1>
+
+<script src="/js/tag.js" defer></script>
+
+<div class="mt-7 m-6">
+    <div class="d-flex flex-wrap flex-justify-center align-center">
+        <div id="deck"></div>
+        <!--<div id="discard"><img src="/img/hns/discard.png" style="--rotate: -59deg" /></div>-->
+        <div class="d-none width-full">
+            <div id="buffer" class="d-flex flex-row overflow-scroll"></div>
+            <button class="btn btn-primary mt-2" id="keep-button" disabled>Keep 0 cards</button>
+        </div>
+    </div>
+
+
+    <br>
+
+    <div id="challenge" hidden>
+        <h3><span id="name"></span> (<span id="cost"></span>)</h3>
+        <p id="description"></p>
+
+        <button class="btn btn-primary mt-2" id="complete-button">Complete</button>
+        <button class="btn btn-danger mt-2" id="veto-button">Veto</button>
+    </div>
+
+    <div class="d-flex flex-row overflow-scroll" id="hand" style="gap: -20px;"></div>
+
+    <br><br>
+
+    <button class="btn btn-danger mt-2" id="reset-button">Reset</button>
+</div>
